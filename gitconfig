@@ -1,0 +1,136 @@
+# git command auto-completion
+# Download the Git source code, and look in the contrib/completion directory;
+# there should be a file called git-completion.bash. Copy this file to your
+# home directory, and add this to your .bashrc file:
+# source ~/.git-completion.bash
+#
+# check settings
+# $ git config --list
+#
+# Initializing a Repository in an Existing Directory
+# $ git init
+#
+# Cloning an Existing Repository
+# $ git clone git://github.com/schacon/grit.git
+# $ git clone git://github.com/schacon/grit.git <other_name>
+#
+# tag
+# $ git tag v1.0.0
+# list tags
+# $ git tag
+# show tag detail
+# tag show v1.0.0
+#
+# tag later
+# $ git log --pretty=oneline
+# Lightweight Tags: 无注释的tag
+# $ git tag v0.0.1 86fe0c44b018f03395da974d5b6d0dd81677a2e8
+# Annotated Tags: 有注释的tag
+# $ git tag -a v0.1.0 676c81069ca74f903c3d98b0256e8c6ff8b844dd -m "可以用的"
+#
+# By default, the git push command doesn’t transfer tags to remote servers.
+# You will have to explicitly push tags to a shared server after you have
+# created them. 
+# $ git push origin --tags
+#
+# Unlike many other VCSs, Git encourages a workflow that branches and merges
+# often, even multiple times in a day. Understanding and mastering this
+# feature gives you a powerful and unique tool and can literally change the
+# way that you develop.
+# 无论是添加新功能，还是修改bug。都应先建立一个对应的分支，完成后，合并到主分
+# 支。这样就能保证，在开发新功能的同时，如果有一个紧急的bug需要修改，我就可以
+# 切回主分支进行修改(先提交修改)，而不会造成因当前修改过大，短时间无法发布bug 
+# fix 版本。
+# 每次建立分支，或者切换分支前，都需要把当前的修改提交，否则切换到其他分支也能
+# 看到这些未提交的修改，working directory 下的文件不会恢复到指定文档的版本.
+#
+# 建立分支
+# $ git branch <branch_name>
+#
+# 切换到指定分支
+# $ git checkout <branch_name>
+#
+# Merge 
+# 先切换到需要合并到的分支，例如 master, 然后 merge
+# $ git checkout master
+# $ git merge <branch_name>
+# 如果有冲突，使用 mergetool
+# $ git mergetool
+# 再手动提交修改
+#
+# 删除无用分支
+# $ git branch -d <branch_name>
+#
+# 列出所有分支，并显示当前所处分支
+# $ git branch
+# $ git branch -v
+#
+# 列出所有分支的关系
+# $ git log --graph --all --decorate --oneline
+# $ git log --graph --all --decorate --simplify-by-decoration
+#
+# 列出指定分支的关系
+# $ git log --graph --all --decorate --simplify-by-decoration <b1> <b2>
+#
+# rebase
+# 同 merge 不同的是，rebase 能使提交历史更简洁，变成一条线，而不是 merge 那样
+# 多线并行(master 与 branch 都有独立提交的时候)
+# $ git checkout <branch_name>
+# $ git rebase master
+# $ git checkout master
+# $ git merge <branch_name>
+# $ git branch -d <branch_name>
+#
+# use vimdiff to "git diff"
+# use "git difftool" instead of "git diff"
+#
+#
+# git rm 
+# ======
+# git rm 会把文件同时从本地目录及版本控制中删除。
+#
+#
+# push to remote repository
+# =========================
+# $ git remote add origin https://github.com/username/Hello-World.git
+# Creates a remote named "origin" pointing at your GitHub repo
+#
+# $ git push origin master
+# Sends your commits in the "master" branch to GitHub
+#
+# 查看所有的 remote repository
+# $ git remote
+[user]
+	name = Zhongwei Sun
+	email = zhongwei.sun2008@gmail.com
+
+[core]
+    editor = vim
+	excludesfile = /Users/zhongwei/.gitignore_global
+
+[merge]
+    tool = vimdiff
+
+[mergetool]
+    # fuck off "Hit return to launch 'vimdiff'"
+    prompt = False
+
+[diff]
+    tool = vimdiff
+
+[difftool]
+    # fuck off "Hit return to launch 'vimdiff'"
+    prompt = False
+
+[gui]
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[alias]
+    lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%cr)%C(reset) %C(white)%s%C(reset) %C(bold white)— %cn%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%cD%C(reset) %C(bold green)(%cr)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %cn%C(reset)' --abbrev-commit
+    lg = !"git lg1"
