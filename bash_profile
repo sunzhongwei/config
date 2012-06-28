@@ -14,6 +14,13 @@
 # 但是在子进程中，无论使用 export 还是 = 都无法改变父进程的值。
 # 而这里所说的父进程，通常是指 bash shell，所以通常修改环境变量都是通过
 # source <some_script>.sh
+#
+# pretty-print json
+# =================
+# echo '<raw_json>' | python -mjson.tool
+# example:
+# echo '{"msg": "ok", "data": {"list": [{"website": "letv", "url": "http://www.letv.com/ptv/pplay/75420/2.html", "video_id": "1594024"}], "cover": "http://img0.hao123.com/data/1_410778331e67b59a079ce4f802fcb26d"}, "ret": 0}' | python -mjson.tool
+# http://stackoverflow.com/questions/352098/how-to-pretty-print-json-script
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
