@@ -11,6 +11,16 @@
 " (number)(command)(text object)
 " 第一种写法，读起来顺口; 但是有时候只能用第二种写法，例如：50i-<ESC>
 "
+" &. 使用 :vimgrep + :cope 在 VIM 中遍历 grep 的搜索结果 
+" ======================================================
+" 例如我要遍历搜索所有包含 RequestHandler 的代码
+" 1. 新建一个 tab 页，否则搜索结果会覆盖掉当前窗口中的内容
+" :tabnew 
+" 2. 搜索, 当前窗口显示的是包含匹配的整个文件内容
+" :vimgrep RequestHandler **/*.py
+" 3. 显示所有匹配的列表
+" :cope
+"
 " &. convert dos format to unix format
 " ====================================
 " set ff=unix
