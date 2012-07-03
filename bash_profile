@@ -21,6 +21,10 @@
 # example:
 # echo '{"msg": "ok", "data": {"list": [{"website": "letv", "url": "http://www.letv.com/ptv/pplay/75420/2.html", "video_id": "1594024"}], "cover": "http://img0.hao123.com/data/1_410778331e67b59a079ce4f802fcb26d"}, "ret": 0}' | python -mjson.tool
 # http://stackoverflow.com/questions/352098/how-to-pretty-print-json-script
+#
+# get return code of program
+# ==========================
+# $ echo $?
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
