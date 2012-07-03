@@ -25,6 +25,22 @@
 # get return code of program
 # ==========================
 # $ echo $?
+#
+# K.I.S.S 原则
+# ============
+# Ask: Ah, I see. And do you deal with a lot of tools?
+# Answer: Arn’t that life? It depends on the operating system. Unix-style systems use a lot of tools to get the work done. 
+# Ask: Creating small tools that work together is almost a philosophy, isn’t it?
+# Answer: It’s a way of life. Sometimes when you’ve got a big problem to solve, it can be easier to break it down into a set of simpler tasks.
+# 
+# Q: Why is it important that small tools use the Standard Input and Standard Output?
+# A: Because it makes it easier to connect tools together with pipes.
+# 
+# Q: So if two programs are piped together, does the first program have to finish running before the second program can start?
+# A: No. Both of the programs will run at the same time; as output is produced by the first program, it can be consumed by the second program.
+# 
+# (./first_tool | ./second_tool) < input_file.txt > output_file.txt
+# 加括号是为了保证 input_file.txt 的内容能够通过 stdin 传递给 first_tool，而不是 second_tool.
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
