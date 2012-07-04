@@ -11,6 +11,15 @@
 " (number)(command)(text object)
 " 第一种写法，读起来顺口; 但是有时候只能用第二种写法，例如：50i-<ESC>
 "
+" Paste registers in search or colon commands instead of using the clipboard
+" ==========================================================================
+" You can type Ctrl-R to insert a register when in insert mode, or when typing
+" in the command or search line.
+" 在 insert mode, 或者输入 vim 命令，搜索时，如果输入 <C-r> 会看到一个 "
+" 提示，这时只需要输入对应的 register 标识，就能进行粘帖, 例如，a。
+" 输入 " 对应 unnamed register.
+" 在命令模式下，可以通过 <C-r><C-w> 来快速粘帖当前光标所在位置的单词。
+"
 " &. 使用 :vimgrep + :cope 在 VIM 中遍历 grep 的搜索结果 
 " ======================================================
 " 例如我要遍历搜索所有包含 RequestHandler 的代码
