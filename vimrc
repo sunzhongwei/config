@@ -20,6 +20,15 @@
 " 输入 " 对应 unnamed register.
 " 在命令模式下，可以通过 <C-r><C-w> 来快速粘帖当前光标所在位置的单词。
 "
+" &. include-search for c programming
+" ===================================
+" Vim knows about include files, and can search them for a word you are
+" looking for. The most common action is to lookup the prototype of a
+" function. Position the cursor on the name of the function in your file and
+" type [I: Vim will show a list of all matches for the function name in
+" included files.
+" 其他相关命令参见：help include-search
+"
 " &. 使用 :vimgrep + :cope 在 VIM 中遍历 grep 的搜索结果 
 " ======================================================
 " 例如我要遍历搜索所有包含 RequestHandler 的代码
