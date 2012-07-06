@@ -41,6 +41,20 @@
 # 
 # (./first_tool | ./second_tool) < input_file.txt > output_file.txt
 # 加括号是为了保证 input_file.txt 的内容能够通过 stdin 传递给 first_tool，而不是 second_tool.
+#
+# Manual sections
+# ===============
+# Section 	Description
+# 1 		General commands
+# 2 		System calls
+# 3 		Library functions, covering in particular the C standard library
+# 4 		Special files (usually devices, those found in /dev) and drivers
+# 5 		File formats and conventions
+# 6 		Games and screensavers
+# 7 		Miscellanea
+# 8 		System administration commands and daemons 
+# 例如：想要查看 c 中 sleep 这个函数的文档
+# $ man 3 sleep
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
