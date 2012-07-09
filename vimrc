@@ -29,6 +29,10 @@
 " included files.
 " 其他相关命令参见：help include-search
 "
+" &. format json string in VIM
+" ============================ 
+" :%!python -m json.tool 
+"
 " &. 使用 :vimgrep + :cope 在 VIM 中遍历 grep 的搜索结果 
 " ======================================================
 " 例如我要遍历搜索所有包含 RequestHandler 的代码
