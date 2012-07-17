@@ -32,6 +32,11 @@
 " &. format json string in VIM
 " ============================ 
 " :%!python -m json.tool 
+" 这里的 % 和查找替换时的作用一样，指选中 buffer 中的所有行。
+" 所以，可以在写程序注释时，这样使用：
+" 先输入一整行 json，为了快速输入，首次输入时，不进行排版
+" {"1": "http://...", "2": "http://...", "3": "http://..."}
+" 然后使用 <C-v> 选中这行，输入 :!python -m json.tool 
 "
 " &. 使用 :vimgrep + :cope 在 VIM 中遍历 grep 的搜索结果 
 " ======================================================
@@ -311,7 +316,8 @@ autocmd BufWritePost *.py call Pyflakes()
 
 
 " format status line
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [%p%%]\ [LINES=%L]
+" set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [%p%%]\ [LINES=%L]
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [LINES=%L]
 set laststatus=2
 
 
