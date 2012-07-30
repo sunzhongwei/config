@@ -375,3 +375,8 @@ endfunction
 command! -bang -range EvalPy :call s:EvaluateCurrentRangeAsMarkedUpPython("<bang>")
 
 
+" get current file name without extention type
+" 以 . 为分割，取第一个段
+command PrintFileBaseName :.!ls % | cut -d . -f 1
+
+
