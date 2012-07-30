@@ -310,6 +310,11 @@ map h3 I-<ESC>A-<ESC>o
 "EOS
 
 
+" Remove trailing whitespace in vim before saving
+" 对于新建文件，可能需要重新打开才能识别文件类型(:e)
+autocmd FileType c,cpp,python,ruby,java,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+
 " A tip might be to run the Pyflakes check every time you write a Python file,
 " to enable this, add the following line to your .vimrc file
 autocmd BufWritePost *.py call Pyflakes()
@@ -317,7 +322,7 @@ autocmd BufWritePost *.py call Pyflakes()
 
 " format status line
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [%p%%]\ [LINES=%L]
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [LINES=%L]
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [LINES=%L]
 set laststatus=2
 
 
@@ -377,6 +382,6 @@ command! -bang -range EvalPy :call s:EvaluateCurrentRangeAsMarkedUpPython("<bang
 
 " get current file name without extention type
 " 以 . 为分割，取第一个段
-command PrintFileBaseName :.!ls % | cut -d . -f 1
+command! PrintFileBaseName :.!ls % | cut -d . -f 1
 
 
