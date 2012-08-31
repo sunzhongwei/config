@@ -4,6 +4,9 @@
 " :so ~/.vimrc
 " so is short for source
 "
+" plugin layout in .vim directory
+" http://learnvimscriptthehardway.stevelosh.com/chapters/42.html
+"
 " &. vi command pattern
 " =====================
 " (command)(number)(text object)

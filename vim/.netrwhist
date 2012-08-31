@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/zhongwei/life/k8/screenshot/tool'
+let g:netrw_dirhist_2='/Users/zhongwei/life/k_server_map/src_v2/k_server_map/server_map'
+let g:netrw_dirhist_3='/Users/zhongwei/.tmuxinator'
+let g:netrw_dirhist_4='/Users/zhongwei/life/k8/screenshot/doc/monitoring'
+let g:netrw_dirhist_5='/Users/zhongwei/life/k_server_map/sql'
