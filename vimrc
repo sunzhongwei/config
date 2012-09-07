@@ -14,6 +14,15 @@
 " (number)(command)(text object)
 " 第一种写法，读起来顺口; 但是有时候只能用第二种写法，例如：50i-<ESC>
 "
+" &. NERDTree
+" ===========
+" enable help doc
+"    :helptags ~/.vim/doc
+" show help
+"    :help NERDTree
+" use NERDTree
+"    :NERDTree
+"
 " Paste registers in search or colon commands instead of using the clipboard
 " ==========================================================================
 " You can type Ctrl-R to insert a register when in insert mode, or when typing
