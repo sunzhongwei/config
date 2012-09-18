@@ -23,6 +23,20 @@
 " use NERDTree
 "    :NERDTree
 "
+" &. taglist 
+" ==========
+" http://www.vim.org/scripts/script.php?script_id=273
+" 由于 taglist 依赖于 Exuberant Ctags，而 Mac OS 下的 ctags 是 UNIX ctags。
+" 所以需要手动安装 Exuberant Ctags.
+" ./configure && make && sudo make install
+" 然后修改 .vimrc , 加入下面的配置
+" let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
+" 
+" show help
+" 	:help :TlistToggle
+" use taglist
+"	:TlistToggle
+"
 " Paste registers in search or colon commands instead of using the clipboard
 " ==========================================================================
 " You can type Ctrl-R to insert a register when in insert mode, or when typing
@@ -446,3 +460,5 @@ onoremap <silent> [L :call NextIndent(1, 0, 1, 1)<CR>
 onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
 
 
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+let Tlist_Use_Right_Window = 1

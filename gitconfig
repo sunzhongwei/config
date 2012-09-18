@@ -7,6 +7,12 @@
 # check settings
 # $ git config --list
 #
+# 显示上次提交更改了哪些文件
+# $ git log --name-only
+#
+# 显示某个提交之前的所有提交纪录
+# $ git log <6位commit-id>
+#
 # Initializing a Repository in an Existing Directory
 # $ git init
 #
