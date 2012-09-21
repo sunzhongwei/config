@@ -213,7 +213,7 @@ map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
 " set colorscheme
 colo elflord
 "colo zellner
-"colo torte 
+"colo torte mm
 "colo macvim
 
 " prompt line for current line 
@@ -339,7 +339,7 @@ map h3 I-<ESC>A-<ESC>o
 
 " Remove trailing whitespace in vim before saving
 " 对于新建文件，可能需要重新打开才能识别文件类型(:e)
-autocmd FileType c,cpp,python,ruby,java,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,python,ruby,java,sh,html autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 
 " A tip might be to run the Pyflakes check every time you write a Python file,
@@ -463,3 +463,9 @@ onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
 
 let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
 let Tlist_Use_Right_Window = 1
+
+
+" Vimwiki
+" 解决与 ibus 拼音输入法的冲突
+autocmd FileType vimwiki noremap <C-S-Space> <C-Space>
+
