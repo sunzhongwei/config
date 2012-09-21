@@ -150,6 +150,7 @@
 " cc: Change one line. (类似的：yy, dd)
 
 
+set nocompatible   	" For vimwiki
 syntax on
 
 " set fileformat=mac
