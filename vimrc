@@ -469,3 +469,4 @@ let Tlist_Use_Right_Window = 1
 " 解决与 ibus 拼音输入法的冲突
 autocmd FileType vimwiki noremap <C-S-Space> <C-Space>
 
+
