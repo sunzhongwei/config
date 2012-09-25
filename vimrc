@@ -211,10 +211,7 @@ set showcmd
 map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
 
 " set colorscheme
-colo elflord
-"colo zellner
-"colo torte mm
-"colo macvim
+colo desert 
 
 " prompt line for current line 
 " set cterm=None to remove the underline
@@ -229,7 +226,7 @@ colo elflord
 
 " set MacVim font and size, instead of the default
 "set guifont=Bitstream\ Vera\ Sans\ Mono:h13
-set guifont=Monaco:h12
+set guifont=Monaco:h14
 
 " python doc comment
 inoremap ''' '''<CR>'''<ESC>kA
