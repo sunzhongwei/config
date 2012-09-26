@@ -1,0 +1,14 @@
+/*
+* Program to do something. 
+* (c)2012, Zhongwei. 
+* compile: 
+* gcc hello_world.c -o hello_world && ./hello_world
+*/
+
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    puts("Hello world!");
+    return 0; 
+}
