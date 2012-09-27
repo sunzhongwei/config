@@ -208,7 +208,7 @@ set showcmd
 
 " Execute file being edited with <Shift> + e:
 " add -B argument to not generate .pyc file
-map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
+autocmd FileType python map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
 
 " set colorscheme
 colo desert 
@@ -466,4 +466,5 @@ let Tlist_Use_Right_Window = 1
 " 解决与 ibus 拼音输入法的冲突
 autocmd FileType vimwiki noremap <C-S-Space> <C-Space>
 
+autocmd FileType vimwiki map <buffer> <S-e> :Vimwiki2HTMLBrowse <CR>
 
