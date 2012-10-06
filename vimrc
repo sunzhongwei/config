@@ -210,8 +210,20 @@ set showcmd
 " add -B argument to not generate .pyc file
 autocmd FileType python map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
 
-" set colorscheme
-colo desert 
+
+" MacVim configuration
+if has("gui_running")
+    " set colorscheme
+    colo macvim 
+    
+    " set MacVim font and size, instead of the default
+    "set guifont=Bitstream\ Vera\ Sans\ Mono:h13
+    set guifont=Monaco:h14
+
+    " 透明背景
+    set transparency=10      
+endif 
+
 
 " prompt line for current line 
 " set cterm=None to remove the underline
@@ -223,10 +235,6 @@ colo desert
 " type 'za' to open and close a fold inside a method
 "set foldmethod=indent
 "set foldlevel=99
-
-" set MacVim font and size, instead of the default
-"set guifont=Bitstream\ Vera\ Sans\ Mono:h13
-set guifont=Monaco:h14
 
 " python doc comment
 inoremap ''' '''<CR>'''<ESC>kA
