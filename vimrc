@@ -232,9 +232,6 @@ endif
 "set cursorcolumn
 "highlight CursorColumn guibg=lightblue cterm=None ctermbg=lightblue
 
-" type 'za' to open and close a fold inside a method
-"set foldmethod=indent
-"set foldlevel=99
 
 " python doc comment
 inoremap ''' '''<CR>'''<ESC>kA
@@ -417,6 +414,15 @@ command! -bang -range EvalPy :call s:EvaluateCurrentRangeAsMarkedUpPython("<bang
 command! PrintFileBaseName :.!ls % | cut -d . -f 1
 
 
+" = Fold =
+" :help folding
+" Folding with markers
+" type 'za' to open and close a fold inside a method
+set foldenable
+set foldmethod=manual " set foldmethod=marker
+set foldlevel=99
+
+
 " http://vim.wikia.com/wiki/Move_to_next/previous_line_with_same_indentation
 " Jump to the next or previous line that has the same level or a lower
 " level of indentation than the current line.
@@ -475,4 +481,3 @@ let Tlist_Use_Right_Window = 1
 autocmd FileType vimwiki noremap <C-S-Space> <C-Space>
 
 autocmd FileType vimwiki map <buffer> <S-e> :Vimwiki2HTMLBrowse <CR>
-
