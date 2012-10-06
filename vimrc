@@ -214,7 +214,7 @@ autocmd FileType python map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
 " MacVim configuration
 if has("gui_running")
     " set colorscheme
-    colo macvim 
+    colo desert 
     
     " set MacVim font and size, instead of the default
     "set guifont=Bitstream\ Vera\ Sans\ Mono:h13
