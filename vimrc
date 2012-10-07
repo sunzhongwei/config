@@ -416,11 +416,7 @@ command! PrintFileBaseName :.!ls % | cut -d . -f 1
 
 " = Fold =
 " :help folding
-" Folding with markers
-" type 'za' to open and close a fold inside a method
-set foldenable
-set foldmethod=manual " set foldmethod=marker
-set foldlevel=99
+set foldmethod=manual
 
 
 " http://vim.wikia.com/wiki/Move_to_next/previous_line_with_same_indentation
