@@ -477,3 +477,13 @@ let Tlist_Use_Right_Window = 1
 autocmd FileType vimwiki noremap <C-S-Space> <C-Space>
 
 autocmd FileType vimwiki map <buffer> <S-e> :Vimwiki2HTMLBrowse <CR>
+
+
+" UI language
+if has('unix')
+    language messages C
+else
+    language messages en
+endif
+
+
