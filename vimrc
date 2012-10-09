@@ -1,166 +1,18 @@
-" 常用命令
-" &. 重新加载 vim 配置文件
-" ========================
-" :so ~/.vimrc
-" so is short for source
-"
-" plugin layout in .vim directory
-" http://learnvimscriptthehardway.stevelosh.com/chapters/42.html
-"
-" &. vi command pattern
-" =====================
-" (command)(number)(text object)
-" 等同于
-" (number)(command)(text object)
-" 第一种写法，读起来顺口; 但是有时候只能用第二种写法，例如：50i-<ESC>
-"
-" &. NERDTree
-" ===========
-" enable help doc
-"    :helptags ~/.vim/doc
-" show help
-"    :help NERDTree
-" use NERDTree
-"    :NERDTree
-"
-" &. taglist 
-" ==========
-" http://www.vim.org/scripts/script.php?script_id=273
-" 由于 taglist 依赖于 Exuberant Ctags，而 Mac OS 下的 ctags 是 UNIX ctags。
-" 所以需要手动安装 Exuberant Ctags.
-" ./configure && make && sudo make install
-" 然后修改 .vimrc , 加入下面的配置
-" let Tlist_Ctags_Cmd="/usr/local/bin/ctags"
-" 
-" show help
-" 	:help :TlistToggle
-" use taglist
-"	:TlistToggle
-"
-" Paste registers in search or colon commands instead of using the clipboard
-" ==========================================================================
-" You can type Ctrl-R to insert a register when in insert mode, or when typing
-" in the command or search line.
-" 在 insert mode, 或者输入 vim 命令，搜索时，如果输入 <C-r> 会看到一个 "
-" 提示，这时只需要输入对应的 register 标识，就能进行粘帖, 例如，a。
-" 输入 " 对应 unnamed register.
-" 在命令模式下，可以通过 <C-r><C-w> 来快速粘帖当前光标所在位置的单词。
-"
-" &. include-search for c programming
-" ===================================
-" Vim knows about include files, and can search them for a word you are
-" looking for. The most common action is to lookup the prototype of a
-" function. Position the cursor on the name of the function in your file and
-" type [I: Vim will show a list of all matches for the function name in
-" included files.
-" 其他相关命令参见：help include-search
-"
-" &. format json string in VIM
-" ============================ 
-" :%!python -m json.tool 
-" 这里的 % 和查找替换时的作用一样，指选中 buffer 中的所有行。
-" 所以，可以在写程序注释时，这样使用：
-" 先输入一整行 json，为了快速输入，首次输入时，不进行排版
-" {"1": "http://...", "2": "http://...", "3": "http://..."}
-" 然后使用 <C-v> 选中这行，输入 :!python -m json.tool 
-"
-" &. 使用 :vimgrep + :cope 在 VIM 中遍历 grep 的搜索结果 
-" ======================================================
-" 例如我要遍历搜索所有包含 RequestHandler 的代码
-" 1. 新建一个 tab 页，否则搜索结果会覆盖掉当前窗口中的内容
-" :tabnew 
-" 2. 搜索, 当前窗口显示的是包含匹配的整个文件内容
-" :vimgrep RequestHandler **/*.py
-" 3. 显示所有匹配的列表
-" :cope
-"
-" &. convert dos format to unix format
-" ====================================
-" set ff=unix
-" 不转换格式带来的问题, 例如将一个 python 文件加上可执行权限，执行时会报错：
-" env: python\r: No such file or directory
-" 因为 dos format 是用 \r\n 做换行
-"
-" &. Auto format pasted code
-" ==========================
-" 我们从网上复制代码到 VIM 的时候，会变成逐行缩进的格式。那是因为每个换行都被
-" 处理成了新的缩进。进入 paste-mode 就能避免这种问题。
-" :set paste
-" 粘帖，之后推出 paste-mode.
-" :set nopaste
-"
-" &. 正则匹配中的特殊字符
-" =======================
-" http://vim.wikia.com/wiki/Search_and_replace
-"
-" &. 查找替换前进行确认 (confirm)
-" :%s/python/ipython/gc
-" 
-" &. Moves the cursor to the character marked by x.
-" =================================================
-" `x 
-" 'x : Moves the cursor to the first character of the line marked by x.
-"
-" &. Joining Two Lines
-" ====================
-" J
-"
-" &. write with sudo
-" ==================
-" :w !sudo tee % > /dev/null
-" http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
-"
-" &. vim 中切换 panes
-" ===================
-" Ctrl-w h,j,k,l
-"
-" &. 移动到匹配的括号，以及C语言的注释 /* */, 
-" ===========================================
-" 以及 preprocessor conditional: #if, #ifdef, #else, #elif, #endif.
-" TODO: 增加对模版语言及HTML标签的支持
-" %
-"
-" &. 数字自增列操作
-" =================
-" 实现一：
-" 将一列数字全部自增一，例如原来是从 0 开始的，改为 1 开始
-" Ctrl-a 是光标处数字的自增，qa 录制一下, 每行执行一下即可。
-" 若要生产一列自增数字 N 行, 从 1 开始
-" 1 qa yy p Ctrl-a q <N>@a
-" 自减是 Ctrl-x
-" 实现二(vimscript)：
-" :for i in range(1, 10)|put =i|endfor
-" :for i in range(1, 10)|put ='current num is: '.i|endfor
-"
-" &. Line complete
-" ================
-" Ctrl-x Ctrl-l
-"
-" &. 更改 vim 的工作目录
-" ======================
-" cd <dir>
-"
-" &. change word
-" ==============
-" cw: To the end of a word
-" c2b: Back 2 words
-" c$: To the end of line
-" c0: To the beginnging of line
-" c2w: change 2 words
-" cc: Change one line. (类似的：yy, dd)
-
-
 set nocompatible   	" For vimwiki
 syntax on
 
+
 " set fileformat=mac
+
 
 " make sure there is no more than 80 characters one line
 " disable this, because it's conflict with set number.
 " set columns=80
 
+
 " yy 就可以复制到系统剪切板
 set clipboard+=unnamed
+
 
 " show line number
 set number
@@ -199,8 +51,10 @@ set hls
 " deable highlight search result
 " set nohls
 
+
 " Show the command we are typing.
 set showcmd
+
 
 " Set tab label to show tab number, filename, if modified ('+' is shown if the 
 " current window in the tab has been modified)
