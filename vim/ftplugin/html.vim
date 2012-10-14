@@ -41,6 +41,8 @@ setlocal softtabstop=2
 " Make backspace delete lots of things. 
 setlocal backspace=indent,eol,start
 
+" show print margin
+setlocal colorcolumn=79
 
 if exists("g:ft_html_autocomment") && (g:ft_html_autocomment == 1)
     setlocal formatoptions-=t formatoptions+=croql

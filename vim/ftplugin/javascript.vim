@@ -51,6 +51,8 @@ setlocal softtabstop=4
 " Make backspace delete lots of things. 
 setlocal backspace=indent,eol,start
 
+" show print margin
+setlocal colorcolumn=79
 
 " Change the :browse e filter to primarily show Java-related files.
 if has("gui_win32")

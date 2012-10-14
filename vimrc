@@ -11,7 +11,10 @@ syntax on
 
 
 " yy 就可以复制到系统剪切板
-set clipboard+=unnamed
+" http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
+"if $TMUX == ''
+"    set clipboard+=unnamed
+"endif
 
 
 " show line number
