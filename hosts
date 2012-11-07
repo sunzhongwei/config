@@ -1,0 +1,103 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost 
+fe80::1%lo0	localhost
+
+
+# vps
+106.187.48.157 linode-vps
+
+
+# working
+192.168.1.20  zhongwei-ubuntu
+114.112.67.222  zhaowei-op
+10.20.221.11    zhuhai-op
+10.20.220.128   server_map
+
+
+# k8
+192.168.1.101   Loginsvr
+192.168.1.102   DBsvr
+192.168.1.103   Sndsvr
+192.168.1.104   Imgsvr
+192.168.1.105   Appsvr
+114.112.67.246  imgview.weikan.cn
+
+
+# Google
+203.208.46.146 www.google.com
+203.208.46.147 www.google.com.hk
+203.208.46.132 clients1.google.com
+203.208.46.149 mail.google.com
+203.208.46.161 chatenabled.mail.google.com
+203.208.46.161 mail-attachment.googleusercontent.com  
+203.208.46.146 id.google.com
+203.208.46.146 encrypted.google.com
+203.208.46.161 encrypted-tbn0.google.com
+203.208.46.162 encrypted-tbn1.google.com
+203.208.46.163 encrypted-tbn2.google.com
+203.208.46.164 encrypted-tbn3.google.com
+203.208.46.132 webcache.googleusercontent.com 
+203.208.46.191 ssl.gstatic.com
+203.208.46.161 docs.google.com
+203.208.46.157 0.docs.google.com
+203.208.46.157 1.docs.google.com
+74.125.91.113 groups.google.com
+74.125.224.97 plus.google.com
+74.125.224.105 plus.google.com
+74.125.224.98 plus.google.com
+74.125.224.104 plus.google.com
+74.125.224.101 plus.google.com
+74.125.224.109 plus.google.com
+74.125.224.96 plus.google.com
+74.125.224.106 plus.google.com
+74.125.224.100 plus.google.com
+74.125.224.110 plus.google.com
+74.125.224.102 plus.google.com
+74.125.224.107 plus.google.com
+74.125.224.99 plus.google.com
+74.125.224.108 plus.google.com
+74.125.224.111 plus.google.com
+74.125.224.103 plus.google.com
+209.85.175.132 images1-focus-opensocial.googleusercontent.com
+209.85.175.132 images2-focus-opensocia2.googleusercontent.com
+209.85.175.132 s2.googleusercontent.com
+209.85.143.132 lh1.googleusercontent.com
+209.85.175.132 lh1.googleusercontent.com
+209.85.143.132 lh2.googleusercontent.com
+209.85.175.132 lh2.googleusercontent.com
+209.85.143.132 lh3.googleusercontent.com
+209.85.175.132 lh3.googleusercontent.com
+209.85.175.132 lh4.googleusercontent.com
+209.85.143.132 lh4.googleusercontent.com
+209.85.143.132 lh5.googleusercontent.com
+209.85.175.132 lh5.googleusercontent.com
+209.85.143.132 lh6.googleusercontent.com
+209.85.175.132 lh6.googleusercontent.com
+203.208.46.29 picadaweb.google.com
+203.208.46.29 lh1.ggpht.com
+203.208.46.29 lh2.ggpht.com
+203.208.46.29 lh3.ggpht.com
+203.208.46.29 lh4.ggpht.com
+203.208.46.29 lh5.ggpht.com
+203.208.46.29 lh6.ggpht.com
+203.208.46.29 lh6.googleusercontent.com
+203.208.46.29 lh5.googleusercontent.com
+203.208.46.29 lh4.googleusercontent.com
+203.208.46.29 lh3.googleusercontent.com
+203.208.46.29 lh2.googleusercontent.com
+203.208.46.29 lh1.googleusercontent.com
+203.208.46.29 plus.google.com
+203.208.46.29 talkgadget.google.com
+
+
+# Block Adobe Activation
+127.0.0.1	activate.adobe.com
+
+
