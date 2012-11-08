@@ -1,0 +1,11 @@
+*~
+.DS_Store
+
+# ignore *.pyc
+*.pyc
+
+# self
+.gitignore
+
+# ignore vim temp file
+*.swp

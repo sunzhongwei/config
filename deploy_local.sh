@@ -8,6 +8,7 @@ cp vimrc ~/.vimrc
 cp bash_profile ~/.bash_profile
 cp tmux.conf ~/.tmux.conf
 cp gitconfig ~/.gitconfig
+cp gitignore_global ~/.gitignore_global
 cp -Rf vim/* ~/.vim/
 cp -f Templates/* ~/Templates/
 
