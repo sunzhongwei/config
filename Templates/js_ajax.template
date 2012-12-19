@@ -4,6 +4,7 @@ $.ajax({
     data: {key1: "value1", key2: "value2"},
     success: function(data) {
         alert("success");
+        var json_data = $.parseJSON(data);
     },
     error: function() {
         alert("error");
