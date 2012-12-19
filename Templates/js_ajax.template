@@ -1,0 +1,11 @@
+$.ajax({
+    type: "POST",
+    url: "/tool",
+    data: {key1: "value1", key2: "value2"},
+    success: function(data) {
+        alert("success");
+    },
+    error: function() {
+        alert("error");
+    }
+});
