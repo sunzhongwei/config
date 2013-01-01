@@ -11,6 +11,7 @@ cp gitconfig ~/.gitconfig
 cp gitignore_global ~/.gitignore_global
 cp -Rf vim/* ~/.vim/
 cp -f Templates/* ~/Templates/
+cp -f bin/* ~/bin/
 
 echo "if you are using Ubuntu, romove ~/.bash_profile"
 
