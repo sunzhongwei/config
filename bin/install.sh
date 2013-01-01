@@ -22,6 +22,7 @@ gcc
 make
 libevent-dev
 libncurses5-dev
+python-dev
 tmux
 git
 nginx
