@@ -23,6 +23,7 @@ make
 libevent-dev
 libncurses5-dev
 tmux
+git
 nginx
 spawn-fcgi
 python-flup

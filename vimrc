@@ -274,7 +274,7 @@ command! PrintFileBaseName :.!ls % | cut -d . -f 1
 
 " = Fold =
 " :help folding
-set foldmethod=manual
+set foldmethod=marker
 
 
 " http://vim.wikia.com/wiki/Move_to_next/previous_line_with_same_indentation
