@@ -38,6 +38,7 @@ pyflakes==0.5.0
 mercurial==2.1.2
 ipython==0.12
 SQLAlchemy==0.8.0b2
+fabric==1.4.1
 PYTHON_PACKAGES
 
 
