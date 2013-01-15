@@ -37,6 +37,7 @@ cat <<PYTHON_PACKAGES | xargs pip install
 pyflakes==0.5.0
 mercurial==2.1.2
 ipython==0.12
+SQLAlchemy==0.8.0b2
 PYTHON_PACKAGES
 
 
