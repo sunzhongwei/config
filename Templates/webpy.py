@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# ----------------------------------------
+# Run with port 5000
+# $ python main.py 5000
+# ----------------------------------------
+
 # build-in, 3rd party and my modules
 import web
 
