@@ -9,3 +9,5 @@
 
 # ignore vim temp file
 *.swp
+
+.sass-cache
