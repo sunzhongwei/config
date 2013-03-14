@@ -74,10 +74,10 @@ def loadhook(handler):
         ret = handler()
     except web.HTTPError:
         web.ctx.orm.commit()
-        ret = BaseServerError.json_response
+        ret = BaseServerError.json_response()
     except:
         web.ctx.orm.rollback()
-        ret = BaseServerError.json_response
+        ret = BaseServerError.json_response()
     finally:
         end_time = time.time()
         web.ctx.orm.commit()
@@ -160,10 +160,10 @@ class BaseError(Exception):
     errcode = 0
     msg = "ok"
 
-    @property
-    def json_response(self):
-        response = {"ret": self.ret, "errcode": self.errcode,
-                "msg": self.msg}
+    @classmethod
+    def json_response(cls):
+        response = {"ret": cls.ret, "errcode": cls.errcode,
+                "msg": cls.msg}
         return json.dumps(response)
 
 class Success(BaseError):
