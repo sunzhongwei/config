@@ -22,6 +22,7 @@
 import os
 import web
 import json
+import time
 import os.path
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import create_engine
@@ -64,23 +65,29 @@ class Log(WsgiLog):
             datefmt = "%Y-%m-%d %H:%M:%S",
             )
 
-def load_sqla(handler):
+def loadhook(handler):
     '''http://webpy.org/cookbook/sqlalchemy
     '''
     web.ctx.orm = scoped_session(sessionmaker(bind=engine))
+    start_time = time.time()
     try:
-        return handler()
+        ret = handler()
     except web.HTTPError:
-       web.ctx.orm.commit()
-       raise
+        web.ctx.orm.commit()
+        ret = BaseServerError.json_response
     except:
         web.ctx.orm.rollback()
-        raise
+        ret = BaseServerError.json_response
     finally:
+        end_time = time.time()
         web.ctx.orm.commit()
+
         # If the above alone doesn't work, uncomment
         # the following line:
         #web.ctx.orm.expunge_all()
+    print "url: %s; cost_time: %0.3fs; response: %s" % (web.ctx.path,
+            end_time-start_time, ret)
+    return ret
 
 urls = (
     "/todos", "TodosHandler",
@@ -88,7 +95,7 @@ urls = (
     '/(.*)', 'HelloHandler',
 )
 app = web.application(urls, globals())
-app.add_processor(load_sqla)
+app.add_processor(loadhook)
 
 
 # ----------------------------------------
