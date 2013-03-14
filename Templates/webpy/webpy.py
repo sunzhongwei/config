@@ -27,6 +27,7 @@ import os.path
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.ext.declarative import declarative_base
 
 from wsgilog import WsgiLog
@@ -72,9 +73,9 @@ def loadhook(handler):
     start_time = time.time()
     try:
         ret = handler()
-    except web.HTTPError:
-        web.ctx.orm.commit()
-        ret = BaseServerError.json_response()
+    except BaseError, err:
+        web.ctx.orm.rollback()
+        ret = err.json_response()
     except:
         web.ctx.orm.rollback()
         ret = BaseServerError.json_response()
@@ -134,22 +135,29 @@ class TodosHandler:
         data = web.input()
         todo = Todo(content=data.content)
         web.ctx.orm.add(todo)
-        return json.dumps({})
+        return Success.json_response()
 
 class TodoHandler:
     def GET(self, todo_id):
-        todo = web.ctx.orm.query(Todo).filter_by(id=todo_id).one()
+        try:
+            todo = web.ctx.orm.query(Todo).filter_by(id=todo_id).one()
+        except NoResultFound:
+            raise NotExistError()
         return json.dumps({"data": {"id": todo.id, "content": todo.content}})
 
     def PUT(self, todo_id):
         data = web.input()
-        todo = web.ctx.orm.query(Todo).filter_by(id=todo_id).one()
+        try:
+            todo = web.ctx.orm.query(Todo).filter_by(id=todo_id).one()
+        except NoResultFound:
+            raise NotExistError()
+
         todo.content = data.content
-        return json.dumps({})
+        return Success.json_response()
 
     def DELETE(self, todo_id):
         web.ctx.orm.query(Todo).filter_by(id=todo_id).delete()
-        return json.dumps({})
+        return Success.json_response()
 
 
 # ----------------------------------------
