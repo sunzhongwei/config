@@ -24,6 +24,7 @@ import web
 import json
 import time
 import os.path
+import traceback
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
@@ -79,6 +80,7 @@ def loadhook(handler):
     except:
         web.ctx.orm.rollback()
         ret = BaseServerError.json_response()
+        print traceback.format_exc()
     finally:
         end_time = time.time()
         web.ctx.orm.commit()
@@ -126,7 +128,8 @@ class HelloHandler:
 class TodosHandler:
     def GET(self):
         todos = web.ctx.orm.query(Todo).all()
-        result = {"data": []}
+        result = Success.json_base()
+        result["data"] = []
         for todo in todos:
             result["data"].append({"id": todo.id, "content": todo.content})
         return json.dumps(result)
@@ -135,7 +138,11 @@ class TodosHandler:
         data = web.input()
         todo = Todo(content=data.content)
         web.ctx.orm.add(todo)
-        return Success.json_response()
+        web.ctx.orm.flush()
+        web.ctx.orm.refresh(todo)
+        result = Success.json_base()
+        result["data"] = {"id": todo.id}
+        return json.dumps(result)
 
 class TodoHandler:
     def GET(self, todo_id):
@@ -143,7 +150,9 @@ class TodoHandler:
             todo = web.ctx.orm.query(Todo).filter_by(id=todo_id).one()
         except NoResultFound:
             raise NotExistError()
-        return json.dumps({"data": {"id": todo.id, "content": todo.content}})
+        result = Success.json_base()
+        result["data"] = {"id": todo.id, "content": todo.content}
+        return json.dumps(result)
 
     def PUT(self, todo_id):
         data = web.input()
@@ -169,10 +178,12 @@ class BaseError(Exception):
     msg = "ok"
 
     @classmethod
+    def json_base(cls):
+        return {"ret": cls.ret, "errcode": cls.errcode, "msg": cls.msg}
+
+    @classmethod
     def json_response(cls):
-        response = {"ret": cls.ret, "errcode": cls.errcode,
-                "msg": cls.msg}
-        return json.dumps(response)
+        return json.dumps(cls.json_base())
 
 class Success(BaseError):
     pass

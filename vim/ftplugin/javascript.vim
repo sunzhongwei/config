@@ -33,19 +33,19 @@ setlocal commentstring=//%s
 " used when editing a new buffer.
 
 " a four-space tab indent width is the prefered coding style for html.
-setlocal tabstop=4
+setlocal tabstop=2
 
 " amount of spaces you want for a deeper level
 " And this allows you to use the < and > keys from visual mode to block
 " indent/unindent regions
-setlocal shiftwidth=4
+setlocal shiftwidth=2
 
 " Insert spaces instead of <TAB> character when the <TAB> key is pressed.
 setlocal expandtab
 
 " make VIM see multiple space characters as tabstops.
 " it makes it easier when pressing BACKSPACE or DELETE.
-setlocal softtabstop=4
+setlocal softtabstop=2
 
 " default is empty
 " Make backspace delete lots of things. 
