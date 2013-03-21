@@ -1,0 +1,13 @@
+<h1>Todos</h1>
+
+<div ng-controller="TodosCtrl">
+  <ul>
+    <li ng-repeat="todo in todos">
+      <a href="" ng-click="delectTodo($index)">删除</a> {{todo.id}} -> {{todo.content}}
+    </li>
+  </ul>
+  <form ng-submit="addTodo()">
+    <input type="text" ng-model="todoContent" size="30" placeholder="add new todo here"/>
+    <input type="submit" value="添加" />
+  </form>
+</div>
