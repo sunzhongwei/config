@@ -347,9 +347,9 @@ endif
 
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
-  \ 'path_html': '~/work/sunzhongwei/src/vimwiki_html/',
+  \ 'path_html': '~/work/vimwiki_html/',
   \ 'css_name': 'style.css',
-  \ 'template_path': '~/work/sunzhongwei/src/',
+  \ 'template_path': '~/vimwiki/',
   \ 'template_default': 'templates/vimwiki_default_template',
   \ 'template_ext': '.html'}]
 
