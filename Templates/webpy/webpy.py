@@ -37,11 +37,14 @@ from wsgilog import WsgiLog
 # ----------------------------------------
 # settings
 # ----------------------------------------
-LOG_FILE = "/tmp/webpy.log"     # use full path
+LOG_FILE = "/data/logs/app/app.log"     # use full path
 LOG_FORMAT = '%(asctime)s %(levelname)s %(message)s'
 LOG_BACKUPS = 10
 
-sqlite_db_path = "/tmp/webpy.sqlite"
+sqlite_db_path = "/data/data/app/db.sqlite"
+db_dir = os.path.split(sqlite_db_path)[0]
+if not os.path.exists(db_dir):
+    os.makedirs(db_dir)
 engine = create_engine("sqlite:///%s" % sqlite_db_path, echo=True)
 Model = declarative_base()
 
