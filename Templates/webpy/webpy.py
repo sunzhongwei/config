@@ -37,11 +37,13 @@ from wsgilog import WsgiLog
 # ----------------------------------------
 # settings
 # ----------------------------------------
-LOG_FILE = "/data/logs/app/app.log"     # use full path
+cur_file_path = os.path.realpath(__file__)
+cur_dir_path = os.path.dirname(cur_file_path)
+LOG_FILE = os.path.join(cur_dir_path, "app.log")     # use full path
 LOG_FORMAT = '%(asctime)s %(levelname)s %(message)s'
 LOG_BACKUPS = 10
 
-sqlite_db_path = "/data/data/app/db.sqlite"
+sqlite_db_path = os.path.join(cur_dir_path, "db.sqlite")
 db_dir = os.path.split(sqlite_db_path)[0]
 if not os.path.exists(db_dir):
     os.makedirs(db_dir)
