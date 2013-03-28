@@ -91,7 +91,8 @@ def loadhook(handler):
         # If the above alone doesn't work, uncomment
         # the following line:
         #web.ctx.orm.expunge_all()
-    print "url: %s; cost_time: %0.3fs; response: %s" % (web.ctx.path,
+    print "url: %s; method: %s, data: %s, cost_time: %0.3fs; response: %s" % (
+            web.ctx.path, web.ctx.method, web.input(),
             end_time-start_time, ret)
     return ret
 
