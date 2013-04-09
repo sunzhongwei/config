@@ -24,6 +24,7 @@ import web
 import json
 import time
 import os.path
+import datetime
 import traceback
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy import create_engine
@@ -117,7 +118,7 @@ class Todo(Model):
     id = Column(Integer(unsigned=True), primary_key=True,
             autoincrement=True)
     content = Column(String(255), nullable=False)
-    created_at = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.datetime.now)
 
 def create_tables():
     Model.metadata.create_all(engine)
@@ -139,7 +140,7 @@ class TodosHandler:
         result["data"] = []
         for todo in todos:
             result["data"].append({"id": todo.id, "content": todo.content})
-        return json.dumps(result)
+        return json_dumps(result)
 
     def POST(self):
         data = web.input()
@@ -149,7 +150,7 @@ class TodosHandler:
         web.ctx.orm.refresh(todo)
         result = Success.json_base()
         result["data"] = {"id": todo.id}
-        return json.dumps(result)
+        return json_dumps(result)
 
 class TodoHandler:
     def GET(self, todo_id):
@@ -159,7 +160,7 @@ class TodoHandler:
             raise NotExistError()
         result = Success.json_base()
         result["data"] = {"id": todo.id, "content": todo.content}
-        return json.dumps(result)
+        return json_dumps(result)
 
     def PUT(self, todo_id):
         data = web.input()
@@ -177,6 +178,33 @@ class TodoHandler:
 
 
 # ----------------------------------------
+# utils
+# ----------------------------------------
+class JSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, (datetime.datetime, datetime.date)):
+            return obj.isoformat()
+        elif isinstance(obj, datetime.timedelta):
+            return str((datetime.datetime.min + obj).time())
+        else:
+            return json.JSONEncoder.default(self, obj)
+
+def json_dumps(obj, **kw):
+    """
+        >>> class Foo:
+        ...     def __json__(self): return 'foo'
+        ...
+        >>> a = [Foo(), Foo()]
+        >>> dumps(a)
+        '[foo, foo]'
+    """
+    return json.dumps(obj, cls=JSONEncoder, **kw)
+
+def json_loads(s, **kw):
+    return json.loads(s, **kw)
+
+
+# ----------------------------------------
 # errors
 # ----------------------------------------
 class BaseError(Exception):
@@ -190,7 +218,7 @@ class BaseError(Exception):
 
     @classmethod
     def json_response(cls):
-        return json.dumps(cls.json_base())
+        return json_dumps(cls.json_base())
 
 class Success(BaseError):
     pass
