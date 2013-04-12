@@ -67,6 +67,11 @@ def insert_data():
     session.add(person)
     session.commit()
 
+    person = Person(name="qq", is_man=True,
+            created_at=now, score=200, updated_at=now)
+    session.add(person)
+    session.commit()
+
 
 def query_data():
     person = session.query(Person).filter_by(name="zhongwei").order_by(
@@ -84,6 +89,21 @@ def query_average():
         print "avg is: %s" % (avg)
 
 
+def query_average_by_group():
+    print "test query_average_by_group"
+    avg_by_name = session.query(Person.name, func.avg(Person.score))\
+            .group_by(Person.name).all()
+    print avg_by_name
+
+    avg_by_name = session.query(Person.name, func.avg(Person.score))\
+            .filter_by(is_man=False).group_by(Person.name).all()
+    print avg_by_name
+
+    avg_by_name = session.query(Person.name, func.sum(Person.score), func.count(Person.score))\
+            .group_by(Person.name).all()
+    print avg_by_name
+
+
 # ----------------------------------------
 # test cases
 # ----------------------------------------
@@ -98,6 +118,6 @@ if '__main__' == __name__:
     create_tables()
     insert_data()
     #query_data()
-    query_average()
+    query_average_by_group()
 
 
