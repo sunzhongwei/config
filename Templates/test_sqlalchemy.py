@@ -10,7 +10,7 @@
 # build-in, 3rd party and my modules
 import os.path
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-from sqlalchemy import Boolean
+from sqlalchemy import Boolean, and_
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 #from sqlalchemy.orm import relationship
@@ -39,6 +39,10 @@ class Person(Model):
     updated_at = Column(DateTime)
 
     #books = relationship("book")
+    def __repr__(self):
+        return "<Person('%s', '%s', '%s', '%s', '%s')>" % (
+                self.name, self.is_man, self.score, self.created_at,
+                self.updated_at)
 
 
 class Book(Model):
@@ -104,6 +108,18 @@ def query_average_by_group():
     print avg_by_name
 
 
+def query_with_filter():
+    print "test query_with_filter"
+    persons = session.query(Person).filter(and_(Person.name=="zhongwei",
+        Person.is_man==True)).all()
+    for person in persons:
+        print person
+
+    persons = session.query(Person).filter(and_(Person.name=="zhongwei",
+        Person.is_man==False)).all()
+    for person in persons:
+        print person
+
 # ----------------------------------------
 # test cases
 # ----------------------------------------
@@ -116,8 +132,9 @@ def run_doctest():
 
 if '__main__' == __name__:
     create_tables()
-    insert_data()
+    #insert_data()
     #query_data()
     query_average_by_group()
+    query_with_filter()
 
 
