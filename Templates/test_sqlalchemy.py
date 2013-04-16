@@ -10,10 +10,10 @@
 # build-in, 3rd party and my modules
 import os.path
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-from sqlalchemy import Boolean, and_
+from sqlalchemy import Boolean, and_, Table
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
-#from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 import datetime
 
@@ -48,11 +48,58 @@ class Person(Model):
 class Book(Model):
     __tablename__ = "book"
 
-    id = Column(Integer(unsigned=True), primary_key=True,
-            autoincrement=True)
+    id = Column(Integer(unsigned=True), primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False)
     owner = Column(Integer(unsigned=True), ForeignKey("person.id"),
             nullable=False)
+
+
+# ----------------------------------------
+# test many to many
+# ----------------------------------------
+sentence_tag = Table("sentence_tag", Model.metadata,
+    Column("sentence_id", Integer(unsigned=True), ForeignKey("sentence.id")),
+    Column("tag_id", Integer(unsigned=True), ForeignKey("tag.id"))
+)
+
+
+class Sentence(Model):
+    __tablename__ = "sentence"
+
+    id = Column(Integer(unsigned=True), primary_key=True, autoincrement=True)
+    content = Column(String(500), nullable=False)
+    tags = relationship("Tag", secondary=sentence_tag, backref="sentences")
+
+    def _find_or_create_tag(self, tag_name):
+        query = session.query(Tag).filter_by(name=tag_name)
+        tag = query.first()
+        if not tag:
+            tag = Tag(name=tag_name)
+        return tag
+
+    def _get_tags(self):
+        return [tag.name for tag in self.tags]
+
+    def _set_tags(self, tag_names):
+        # clear the list first
+        while self.tags:
+            del self.tags[0]
+        # add new tag
+        for tag_name in tag_names:
+            self.tags.append(self._find_or_create_tag(tag_name))
+
+    str_tags = property(_get_tags, _set_tags)
+
+    def __repr__(self):
+        return "id: %s, content: %s, tags: %s" % (self.id, self.content,
+                self.str_tags)
+
+
+class Tag(Model):
+    __tablename__ = "tag"
+
+    id = Column(Integer(unsigned=True), primary_key=True, autoincrement=True)
+    name = Column(String(50), nullable=False, unique=True)
 
 
 def create_tables():
@@ -120,6 +167,17 @@ def query_with_filter():
     for person in persons:
         print person
 
+
+def test_many_to_many():
+    sentence = Sentence(content="Hello world!")
+    session.add(sentence)
+    session.commit()
+
+    sentence.str_tags = ["test", "test2"]
+    session.commit()
+    print sentence
+
+
 # ----------------------------------------
 # test cases
 # ----------------------------------------
@@ -134,7 +192,8 @@ if '__main__' == __name__:
     create_tables()
     #insert_data()
     #query_data()
-    query_average_by_group()
-    query_with_filter()
+    #query_average_by_group()
+    #query_with_filter()
+    test_many_to_many()
 
 
