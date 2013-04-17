@@ -156,7 +156,7 @@ def short_query():
     query = session.query(Person).filter_by(name="zhongwei")
 
     print "get one"
-    zhongwei = query.first()
+    zhongwei = query.filter_by(is_man=True).first()
     print zhongwei
 
     print "get some"
