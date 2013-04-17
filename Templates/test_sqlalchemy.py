@@ -10,7 +10,7 @@
 # build-in, 3rd party and my modules
 import os.path
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-from sqlalchemy import Boolean, and_, Table
+from sqlalchemy import Boolean, and_, Table, desc
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import relationship
@@ -127,7 +127,12 @@ def insert_data():
 def query_data():
     person = session.query(Person).filter_by(name="zhongwei").order_by(
             Person.created_at).first()
-    print person.name, person.created_at
+    print person
+
+    persons = session.query(Person).filter_by(name="zhongwei").order_by(
+            desc(Person.created_at)).all()
+    for person in persons:
+        print person
 
 
 def query_average():
@@ -190,10 +195,10 @@ def run_doctest():
 
 if '__main__' == __name__:
     create_tables()
-    #insert_data()
-    #query_data()
+    insert_data()
+    query_data()
     #query_average_by_group()
     #query_with_filter()
-    test_many_to_many()
+    #test_many_to_many()
 
 
