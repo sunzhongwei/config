@@ -134,6 +134,7 @@ def query_data():
     for person in persons:
         print person
 
+
 def query_first():
     '''测试，当查询不到数据时，first() 的返回值
 
@@ -143,6 +144,25 @@ def query_first():
     person = session.query(Person).filter_by(name="zhongwei2").order_by(
             Person.created_at).first()
     print person
+
+
+def short_query():
+    '''测试，从长语句中提取公共的部分，以复用
+
+    结果：
+    完全可以，果然只在最后执行的时候才生成 SQL 语句
+    '''
+    print "define query"
+    query = session.query(Person).filter_by(name="zhongwei")
+
+    print "get one"
+    zhongwei = query.first()
+    print zhongwei
+
+    print "get some"
+    persons = query.order_by(desc(Person.created_at)).limit(3).all()
+    for person in persons:
+        print person
 
 
 def query_average():
@@ -210,6 +230,5 @@ if '__main__' == __name__:
     #query_average_by_group()
     #query_with_filter()
     #test_many_to_many()
-    query_first()
-
+    short_query()
 
