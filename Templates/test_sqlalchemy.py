@@ -146,6 +146,18 @@ def query_first():
     print person
 
 
+def query_all():
+    '''测试，当查询不到数据时，all() 的返回值
+
+    结果：
+    None
+    '''
+    persons = session.query(Person).filter_by(name="zhongwei2").order_by(
+            Person.created_at).first()
+    print "query all with no data"
+    print persons
+
+
 def short_query():
     '''测试，从长语句中提取公共的部分，以复用
 
@@ -230,5 +242,5 @@ if '__main__' == __name__:
     #query_average_by_group()
     #query_with_filter()
     #test_many_to_many()
-    short_query()
+    query_all()
 
