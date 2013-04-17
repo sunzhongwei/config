@@ -134,6 +134,16 @@ def query_data():
     for person in persons:
         print person
 
+def query_first():
+    '''测试，当查询不到数据时，first() 的返回值
+
+    结果：
+    None
+    '''
+    person = session.query(Person).filter_by(name="zhongwei2").order_by(
+            Person.created_at).first()
+    print person
+
 
 def query_average():
     print "test query_average"
@@ -195,10 +205,11 @@ def run_doctest():
 
 if '__main__' == __name__:
     create_tables()
-    insert_data()
-    query_data()
+    #insert_data()
+    #query_data()
     #query_average_by_group()
     #query_with_filter()
     #test_many_to_many()
+    query_first()
 
 
