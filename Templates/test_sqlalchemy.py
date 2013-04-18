@@ -158,6 +158,13 @@ def query_all():
     print persons
 
 
+def query_in():
+    query = session.query(Person).filter(Person.name.in_(("zhongwei", "qq")))
+    persons = query.all()
+    print "query in"
+    print persons
+
+
 def short_query():
     '''测试，从长语句中提取公共的部分，以复用
 
@@ -242,5 +249,5 @@ if '__main__' == __name__:
     #query_average_by_group()
     #query_with_filter()
     #test_many_to_many()
-    query_all()
+    query_in()
 
