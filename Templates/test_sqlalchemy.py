@@ -150,10 +150,10 @@ def query_all():
     '''测试，当查询不到数据时，all() 的返回值
 
     结果：
-    None
+    []
     '''
     persons = session.query(Person).filter_by(name="zhongwei2").order_by(
-            Person.created_at).first()
+            Person.created_at).all()
     print "query all with no data"
     print persons
 
