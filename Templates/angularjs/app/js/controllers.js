@@ -3,8 +3,14 @@
 /* Controllers */
 
 
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
+function MyCtrl1($scope) {
+  // test data
+  $scope.sentences = [
+    {content: "Hello world!"},
+    {content: "Roma was not build in a day."}
+  ];
+}
+MyCtrl1.$inject = ["$scope"];
 
 
 function MyCtrl2() {
