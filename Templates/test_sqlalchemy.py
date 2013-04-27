@@ -225,6 +225,17 @@ def test_many_to_many():
     print sentence
 
 
+def test_count():
+    '''http://stackoverflow.com/questions/14754994/why-is-sqlalchemy-count-much-slower-than-the-raw-query
+    第一种方式有性能问题，推荐使用第二种
+    '''
+    print "test count"
+    total = session.query(Person).count()
+    print total
+
+    total = session.query(func.count(Person.id)).first()[0]
+    print total
+
 # ----------------------------------------
 # test cases
 # ----------------------------------------
@@ -242,5 +253,6 @@ if '__main__' == __name__:
     #query_average_by_group()
     #query_with_filter()
     #test_many_to_many()
-    query_all()
+    #query_all()
+    test_count()
 
