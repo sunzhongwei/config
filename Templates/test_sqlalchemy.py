@@ -236,6 +236,7 @@ def test_count():
     total = session.query(func.count(Person.id)).first()[0]
     print total
 
+
 # ----------------------------------------
 # test cases
 # ----------------------------------------
