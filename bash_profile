@@ -31,3 +31,5 @@ fi
 
 # git auto-completion
 source ~/.git-completion.bash
+
+alias jslint="~/.npm/jslint/0.1.9/package/bin/jslint.js"

@@ -359,3 +359,7 @@ let g:vimwiki_diary_months = {
       \ 7: '七月', 8: '八月', 9: '九月',
       \ 10: '十月', 11: '十一月', 12: '十二月'
       \ }
+
+" then we can write <div class="test"></div> in wiki
+let g:vimwiki_valid_html_tags="div"
+
