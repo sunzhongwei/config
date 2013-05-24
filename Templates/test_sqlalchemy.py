@@ -8,9 +8,10 @@
 # ----------------------------------------
 
 # build-in, 3rd party and my modules
+import time
 import os.path
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-from sqlalchemy import Boolean, and_, Table, desc
+from sqlalchemy import Boolean, and_, Table, desc, Date
 from sqlalchemy import create_engine, func
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import relationship
@@ -32,17 +33,18 @@ class Person(Model):
 
     id = Column(Integer(unsigned=True), primary_key=True,
             autoincrement=True)
-    name = Column(String(255), nullable=False, index=True)
+    name = Column(String(255), nullable=False, index=True, unique=True)
     is_man = Column(Boolean, nullable=False)
     score = Column(Integer(unsigned=True))
-    created_at = Column(DateTime)
-    updated_at = Column(DateTime)
+    join_date = Column(Date, default=datetime.datetime.now().date())
+    created_at = Column(DateTime, default=datetime.datetime.now())
+    updated_at = Column(DateTime, default=datetime.datetime.now())
 
     #books = relationship("book")
     def __repr__(self):
-        return "<Person('%s', '%s', '%s', '%s', '%s')>" % (
-                self.name, self.is_man, self.score, self.created_at,
-                self.updated_at)
+        return "<Person('%s', '%s', '%s', '%s', '%s', '%s')>" % (
+                self.name, self.is_man, self.score, self.join_date,
+                self.created_at, self.updated_at)
 
 
 class Book(Model):
@@ -107,19 +109,15 @@ def create_tables():
 
 
 def insert_data():
-    now = datetime.datetime.now()
-    person = Person(name="zhongwei", is_man=True,
-            created_at=now, score=100, updated_at=now)
+    person = Person(name="zhongwei", is_man=True, score=100)
     session.add(person)
     session.commit()
 
-    person = Person(name="zhongwei", is_man=True,
-            created_at=now, score=200, updated_at=now)
+    person = Person(name="zhongwei2", is_man=True, score=200)
     session.add(person)
     session.commit()
 
-    person = Person(name="qq", is_man=True,
-            created_at=now, score=200, updated_at=now)
+    person = Person(name="qq", is_man=True, score=200)
     session.add(person)
     session.commit()
 
@@ -128,6 +126,10 @@ def query_data():
     person = session.query(Person).filter_by(name="zhongwei").order_by(
             Person.created_at).first()
     print person
+    print type(person.join_date)
+    time.sleep(2)
+    person.is_man = False
+    session.commit()
 
     persons = session.query(Person).filter_by(name="zhongwei").order_by(
             desc(Person.created_at)).all()
@@ -258,13 +260,7 @@ if '__main__' == __name__:
     create_tables()
     #insert_data()
     #query_data()
-    #query_average_by_group()
+    query_average_by_group()
     #query_with_filter()
     #test_many_to_many()
-<<<<<<< HEAD
-    query_in()
-=======
-    #query_all()
-    test_count()
->>>>>>> 12c6659478b5373eed5835916a5821c715b979bc
 
