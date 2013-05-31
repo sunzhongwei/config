@@ -52,8 +52,9 @@ class Book(Model):
 
     id = Column(Integer(unsigned=True), primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False)
-    owner = Column(Integer(unsigned=True), ForeignKey("person.id"),
-            nullable=False)
+    #owner = Column(Integer(unsigned=True), ForeignKey("person.id"),
+    #        nullable=False)
+    content = Column(String(255))
 
 
 # ----------------------------------------
@@ -246,6 +247,14 @@ def test_count():
     print total
 
 
+def test_empty_field():
+    new_book = Book(name="heart")
+    session.add(new_book)
+    session.commit()
+    book = session.query(Book).first()
+    print book.name, book.content
+
+
 # ----------------------------------------
 # test cases
 # ----------------------------------------
@@ -260,7 +269,9 @@ if '__main__' == __name__:
     create_tables()
     #insert_data()
     #query_data()
-    query_average_by_group()
+    #query_average_by_group()
     #query_with_filter()
     #test_many_to_many()
+    test_empty_field()
+
 
