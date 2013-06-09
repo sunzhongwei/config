@@ -1,0 +1,15 @@
+@mixin gray-background {
+  background: none repeat scroll 0 0 #E8E8E8;
+}
+
+@mixin wood-table-background {
+  color: #939393; 
+  //font: 14px Arial, "宋体", sans-serif; 
+  background: url("/static/image/wood_table.jpg") scroll;
+  //overflow: hidden; 
+}
+
+body {
+  @include wood-table-background;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
