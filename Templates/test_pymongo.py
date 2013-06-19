@@ -24,13 +24,22 @@ MONGODB_DATABASE_NAME = "test_db"
 # ----------------------------------------
 while True:
     try:
-        mongodb_connection = pymongo.Connection(MONGODB_HOST, MONGODB_PORT)
+        # http://emptysqua.re/blog/pymongos-new-default-safe-writes/
+        # By default, Connection did unacknowledged writes—it didn't call
+        # getLastError at all. You could change that with the safe option
+        # like:
+        mongodb_connection = pymongo.Connection(MONGODB_HOST, MONGODB_PORT,
+                safe=True)
         break
     except ConnectionFailure, err:
         print "Could not connect to MongoDB: %s" % err
         print "Retry in 5 seconds"
         time.sleep(5)
 db = mongodb_connection[MONGODB_DATABASE_NAME]
+
+
+def create_index():
+    db.task.ensure_index([("name", 1), ])
 
 
 def test():
