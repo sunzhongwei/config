@@ -361,5 +361,5 @@ let g:vimwiki_diary_months = {
       \ }
 
 " then we can write <div class="test"></div> in wiki
-let g:vimwiki_valid_html_tags="div,script,style,ul,li"
+let g:vimwiki_valid_html_tags="div,script,style,ul,li,iframe"
 
