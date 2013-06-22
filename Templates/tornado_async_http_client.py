@@ -15,12 +15,14 @@
 # build-in, 3rd party and my modules
 import time
 import urllib2
+import functools
 from tornado import ioloop
-from tornado.httpclient import AsyncHTTPClient
+from tornado.httpclient import AsyncHTTPClient, HTTPRequest
 
 
 def get_jobs():
     jobs = []
+    jobs.append(Job("http://www.twitter.com"))
     jobs.append(Job("http://www.sunzhongwei.com"))
     jobs.append(Job("http://www.baidu.com"))
     jobs.append(Job("http://www.goolge.com"))
@@ -45,8 +47,12 @@ class TornadoWorker(object):
         self.jobs = jobs
         self.total_jobs = len(jobs)
         self.finished_jobs_counter= 0
+        self.headers = {
+            "User-Agent": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)",
+        }
 
-    def _handle_request(self, response):
+    def _handle_request(self, url, response):
+        print url
         if response.error:
             print "Error:", response.error
         else:
@@ -60,7 +66,10 @@ class TornadoWorker(object):
     def run(self):
         http_client = AsyncHTTPClient(max_clients=self.max_clients)
         for job in self.jobs:
-            http_client.fetch(job.url, self._handle_request)
+            req = HTTPRequest(job.url, request_timeout=3,
+                              headers=self.headers)
+            http_client.fetch(req, functools.partial(self._handle_request,
+                                                     job.url))
 
         ioloop.IOLoop.instance().start()
 

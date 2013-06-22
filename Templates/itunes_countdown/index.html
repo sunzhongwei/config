@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+<style type="text/css">
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    ul {
+      list-style-type: none;
+      width: 566px;
+      margin: 50px auto;
+      display: block;
+    }
+
+    li {
+      float: left;
+      background: url(http://cnanney-files.s3.amazonaws.com/journal/apple-counter/filmstrip.png) 0 0 no-repeat;
+      width: 53px;
+      height: 103px;
+    }
+
+    li.seperator {
+      background: url(http://cnanney-files.s3.amazonaws.com/journal/apple-counter/comma.png) 2px 75px no-repeat;
+      width: 12px
+    }
+</style>
+
+
+<body>
+  <ul>
+    <li id="d7"></li>
+    <li id="d6"></li>
+    <li class="seperator"></li>
+    <li id="d5"></li>
+    <li id="d4"></li>
+    <li class="seperator"></li>
+    <li id="d3"></li>
+    <li id="d2"></li>
+    <li class="seperator"></li>
+    <li id="d1"></li>
+    <li id="d0"></li>
+  </ul>
+<script type="text/javascript">
+
+
+    function CountDownTimer(dt)
+    {
+        var end = new Date(dt);
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+
+            var countdown = pad(days, 2) + pad(hours, 2) + pad(minutes, 2) + pad(seconds, 2);
+            console.log(countdown);
+            return countdown;
+        }
+
+        return showRemaining();
+    }
+
+    function pad(num, size) {
+      // output integers with leading zeros
+      var s = num + "";
+      while (s.length < size) s = "0" + s;
+      return s;
+    }
+
+  // Array to hold each digit's starting background-position Y value
+  var initialPos = [0, -618, -1236, -1854, -2472, -3090, -3708, -4326, -4944, -5562];
+  // Amination frames
+  var animationFrames = 5;
+  // Frame shift
+  var frameShift = 103;
+
+  // Starting number
+  var theNumber = CountDownTimer('06/15/2013 10:1 AM');
+  var theNewNumber;
+  // Pace of counting in milliseconds
+  var pace = 1000;
+
+  // Initializing variables
+  var digitsOld = [], digitsNew = [], subStart, subEnd, x, y;
+
+  // Function that controls counting
+  function doCount(){
+    theNewNumber = CountDownTimer('06/15/2013 10:1 AM');
+    digitCheck(theNumber, theNewNumber);
+    theNumber = theNewNumber;
+    console.log(theNumber + "," + theNewNumber);
+  }
+
+  // This checks the old count value vs. new value, to determine how many digits
+  // have changed and need to be animated.
+  function digitCheck(x, y){
+    var digitsOld = splitToArray(x),
+      digitsNew = splitToArray(y);
+    for (var i = 0, c = digitsNew.length; i < c; i++){
+      if (digitsNew[i] != digitsOld[i]){
+        animateDigit(i, digitsOld[i], digitsNew[i]);
+      }
+    }
+  }
+
+  // Animation function
+  function animateDigit(n, oldDigit, newDigit){
+    // I want three different animations speeds based on the digit,
+    // because the pace and increment is so high. If it was counting
+    // slower, just one speed would do.
+    // 1: Changes so fast is just like a blur
+    // 2: You can see complete animation, barely
+    // 3: Nice and slow
+    var speed;
+    switch (n){
+      case 0:
+        speed = pace / 8;
+        break;
+      case 1:
+        speed = pace / 4;
+        break;
+      default:
+        speed = pace / 2;
+        break;
+    }
+    // Cap on slowest animation can go
+    speed = (speed > 100) ? 100 : speed;
+    // Get the initial Y value of background position to begin animation
+    var pos = initialPos[oldDigit];
+    // Each animation is 5 frames long, and 103px down the background image.
+    // We delay each frame according to the speed we determined above.
+    for (var k = 0; k < animationFrames; k++){
+      pos = pos-frameShift;
+      if (k == (animationFrames-1)){
+        $("#d"+n).delay(speed).animate({'background-position': '0 '+pos+'px'}, 0, function(){
+          // At end of animation, shift position to new digit.
+          $("#d"+n).css({'background-position': '0 '+initialPos[newDigit]+'px'}, 0);
+        });
+      }
+      else{
+        $("#d"+n).delay(speed).animate({'background-position': '0 '+pos+'px'}, 0);
+      }
+    }
+  }
+
+  // Splits each value into an array of digits
+  function splitToArray(input){
+    var digits = new Array();
+    for (var i = 0, c = input.length; i < c; i++){
+      subStart = input.length-(i+1);
+      subEnd = input.length-i;
+      digits[i] = input.substring(subStart, subEnd);
+    }
+    return digits;
+  }
+
+  // Sets the correct digits on load
+  function initialDigitCheck(initial) {
+    var digits = splitToArray(initial);
+    for (var i = 0, c = digits.length; i < c; i++) {
+      $("#d"+i).css({'background-position': '0 '+initialPos[digits[i]]+'px'});
+    }
+  }
+
+  // Start it up
+  initialDigitCheck(theNumber);
+  setInterval(doCount, pace);
+
+  //]]>
+</script>
+</body>
