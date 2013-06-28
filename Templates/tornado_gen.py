@@ -35,7 +35,6 @@ class MainHandler(tornado.web.RequestHandler):
             print datetime.datetime.now()
 
 
-
 application = tornado.web.Application([
     (r"/", MainHandler),
 ], debug=True)
