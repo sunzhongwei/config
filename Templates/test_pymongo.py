@@ -44,12 +44,22 @@ def create_index():
 
 def test():
     collection = db["task"]
+
+
+    collection.insert({"name": "zhongwei"})
+
+    print "count function"
     print collection.find({"name": "zhongwei"}).count()
 
     result = collection.find({"name": "zhongwei"})
     print result
+    print "result count"
+    print result.count()
+
+    #print len(result)
     items = [item for item in result]
     print items
+    print len(items)
 
 
 # ----------------------------------------
