@@ -61,6 +61,11 @@ def test():
     print items
     print len(items)
 
+    items = collection.find()
+    for item in items:
+        # get unexist field
+        print item.get("heihei", None)
+
 
 # ----------------------------------------
 # test cases
