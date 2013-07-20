@@ -25,7 +25,7 @@ Model = declarative_base()
 class User(Model):
     __tablename__ = "user"
 
-    id = Column(Integer(unsigned=True), primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False, index=True, unique=True)
     msg = Column(String(1000))
 

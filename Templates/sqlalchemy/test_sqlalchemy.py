@@ -31,11 +31,11 @@ session = Session()     # create a Session
 class Person(Model):
     __tablename__ = "person"
 
-    id = Column(Integer(unsigned=True), primary_key=True,
+    id = Column(Integer, primary_key=True,
             autoincrement=True)
     name = Column(String(255), nullable=False, index=True, unique=True)
     is_man = Column(Boolean, nullable=False)
-    score = Column(Integer(unsigned=True))
+    score = Column(Integer)
     join_date = Column(Date, default=datetime.datetime.now().date())
     created_at = Column(DateTime, default=datetime.datetime.now())
     updated_at = Column(DateTime, default=datetime.datetime.now())
@@ -50,7 +50,7 @@ class Person(Model):
 class Book(Model):
     __tablename__ = "book"
 
-    id = Column(Integer(unsigned=True), primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False)
     #owner = Column(Integer(unsigned=True), ForeignKey("person.id"),
     #        nullable=False)
@@ -61,15 +61,15 @@ class Book(Model):
 # test many to many
 # ----------------------------------------
 sentence_tag = Table("sentence_tag", Model.metadata,
-    Column("sentence_id", Integer(unsigned=True), ForeignKey("sentence.id")),
-    Column("tag_id", Integer(unsigned=True), ForeignKey("tag.id"))
+    Column("sentence_id", Integer, ForeignKey("sentence.id")),
+    Column("tag_id", Integer, ForeignKey("tag.id"))
 )
 
 
 class Sentence(Model):
     __tablename__ = "sentence"
 
-    id = Column(Integer(unsigned=True), primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     content = Column(String(500), nullable=False)
     tags = relationship("Tag", secondary=sentence_tag, backref="sentences")
 
@@ -101,7 +101,7 @@ class Sentence(Model):
 class Tag(Model):
     __tablename__ = "tag"
 
-    id = Column(Integer(unsigned=True), primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False, unique=True)
 
 
