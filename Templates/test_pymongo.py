@@ -67,6 +67,12 @@ def test():
         print item.get("heihei", None)
 
 
+def test_upsert():
+    db.task.update({"date": "2013-07-22"}, {"$inc": {"count": 10}},
+                   upsert=True)
+    for item in db.task.find({"date": "2013-07-22"}):
+        print item
+
 # ----------------------------------------
 # test cases
 # ----------------------------------------
@@ -78,5 +84,5 @@ def run_doctest():
 
 
 if '__main__' == __name__:
-    test()
+    test_upsert()
 
