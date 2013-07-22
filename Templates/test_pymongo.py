@@ -68,6 +68,12 @@ def test():
 
 
 def test_upsert():
+    '''The $inc operator increments a value of a field by a specified amount.
+    If the field does not exist, $inc sets the field to the specified amount.
+    $inc accepts positive and negative incremental amounts.
+
+    upsert = True, perform insert if not exist, else update.
+    '''
     db.task.update({"date": "2013-07-22"}, {"$inc": {"count": 10}},
                    upsert=True)
     for item in db.task.find({"date": "2013-07-22"}):
