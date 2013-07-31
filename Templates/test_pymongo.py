@@ -79,6 +79,11 @@ def test_upsert():
     for item in db.task.find({"date": "2013-07-22"}):
         print item
 
+
+def test_find_one():
+    item = db.task.find_one({"heihei": "heiehie"})
+    print item
+
 # ----------------------------------------
 # test cases
 # ----------------------------------------
@@ -90,5 +95,5 @@ def run_doctest():
 
 
 if '__main__' == __name__:
-    test_upsert()
+    test_find_one()
 
