@@ -44,13 +44,45 @@ def create_index():
 
 def test():
     collection = db["task"]
+
+
+    collection.insert({"name": "zhongwei"})
+
+    print "count function"
     print collection.find({"name": "zhongwei"}).count()
 
     result = collection.find({"name": "zhongwei"})
     print result
+    print "result count"
+    print result.count()
+
+    #print len(result)
     items = [item for item in result]
     print items
+    print len(items)
 
+    items = collection.find()
+    for item in items:
+        # get unexist field
+        print item.get("heihei", None)
+
+
+def test_upsert():
+    '''The $inc operator increments a value of a field by a specified amount.
+    If the field does not exist, $inc sets the field to the specified amount.
+    $inc accepts positive and negative incremental amounts.
+
+    upsert = True, perform insert if not exist, else update.
+    '''
+    db.task.update({"date": "2013-07-22"}, {"$inc": {"count": 10}},
+                   upsert=True)
+    for item in db.task.find({"date": "2013-07-22"}):
+        print item
+
+
+def test_find_one():
+    item = db.task.find_one({"heihei": "heiehie"})
+    print item
 
 # ----------------------------------------
 # test cases
@@ -63,5 +95,5 @@ def run_doctest():
 
 
 if '__main__' == __name__:
-    test()
+    test_find_one()
 
