@@ -1,0 +1,8 @@
+CREATE TABLE table_name (
+    added_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id CHAR(32) NOT NULL,
+    updated DATETIME NOT NULL,
+    body MEDIUMBLOB,
+    UNIQUE KEY (id),
+    KEY (updated)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
