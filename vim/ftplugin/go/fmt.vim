@@ -30,12 +30,16 @@ setlocal tabstop=4
 " indent/unindent regions
 setlocal shiftwidth=4
 
+" According to http://golang.org/doc/effective_go.html
+" - Indentation
+" - We use tabs for indentation and gofmt emits them by default. Use spaces only
+" - if you must.
 " Insert spaces instead of <TAB> character when the <TAB> key is pressed.
-setlocal expandtab
+"setlocal expandtab
 
 " make VIM see multiple space characters as tabstops.
 " it makes it easier when pressing BACKSPACE or DELETE.
-setlocal softtabstop=4
+"setlocal softtabstop=4
 
 " default is empty
 " Make backspace delete lots of things. 

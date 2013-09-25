@@ -1,14 +1,16 @@
-// > go run hello.go 
-// or 
-// > go build hello.go
-// > ./hello
+/*
+Copyright 2013 Zhongwei Inc.
+
+Author: Zhongwei Sun
+EMail:  zhongwei.sun2008@gmail.com
+*/
 
 package main
 
 import (
-    "fmt"
+	"fmt"
 )
 
 func main() {
-    fmt.Println("Hello world")
+	fmt.Println("Hello world")
 }
