@@ -1,6 +1,8 @@
+mkdir -p $HOME/golang
+export GOPATH=$HOME/golang
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH=$PATH:$HOME/bin:/usr/local/sbin
+export PATH=$PATH:$HOME/bin:$GOPATH/bin:/usr/local/sbin
 export PATH=/usr/local/mysql/bin:$PATH
 export SVN_EDITOR=vim
 export EDITOR=vim
