@@ -8,7 +8,7 @@ OS=`uname`
 
 cp vimrc ~/.vimrc
 if [ "$OS" = "Linux" ]; then
-    echo "Not copy bash_profile, because os is" $OS
+    cp bashrc ~/.bashrc
 else
     cp bash_profile ~/.bash_profile
 fi;
