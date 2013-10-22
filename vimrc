@@ -63,9 +63,18 @@ set showcmd
 " current window in the tab has been modified)
 "set guitablabel=%N/\ %t\ %M
 
+" Python
 " Execute file being edited with <Shift> + e:
 " add -B argument to not generate .pyc file
 autocmd FileType python map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
+
+" ---------------------------------------- 
+" Golang
+" ---------------------------------------- 
+" <Shift> + e: Execute golang code
+autocmd FileType go map <buffer> <S-e> :w<CR>:!/usr/bin/env go run % <CR>
+" format golang code before saving
+autocmd FileType go autocmd BufWritePre <buffer> Fmt 
 
 
 " MacVim configuration
