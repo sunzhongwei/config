@@ -29,6 +29,12 @@ i'm zhongwei`
 	new_msg := name + msg
 	fmt.Println("new msg:", new_msg)
 
+	// format string
+	// func Sprintf(format string, a ...interface{}) string
+	// Sprintf formats according to a format specifier and returns the resulting string.
+	new_string := fmt.Sprintf("my name is: %v, age is: %v", name, 18)
+	fmt.Println(new_string)
+
 	// 不可修改
 	// name[2] = 'c'
 	// 上面一行在编译时，会报错 cannot assign to name[2]
