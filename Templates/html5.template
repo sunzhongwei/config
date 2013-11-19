@@ -1,6 +1,13 @@
 <!DOCTYPE html>
+<html lang="zh-CN">
 
-<!-- The first line used to tell validators and editors what tags and
-attributes you can use and how the document should be formed. It’s also used
-by a lot of web browsers to determine how the browser will render the page.
--->
+<head>
+  <meta charset="utf-8">
+  <title>Index Page</title>
+</head>
+
+<body>
+</body>
+
+</html>
+
