@@ -10,6 +10,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"os"
 )
 
 // normal
@@ -74,6 +75,85 @@ func modifySlice(members []string, newMember string) {
 	members[1] = newMember
 }
 
+// defer
+func deferCloseFile() (err error) {
+	err = nil
+
+	file, err := os.Open("hello_var.go")
+	if err != nil {
+		err = errors.New("Fail to open file")
+		return
+	}
+	defer file.Close()
+
+	data := make([]byte, 100)
+	count, err := file.Read(data)
+	if err != nil {
+		err = errors.New("Fail to read file")
+		return
+	}
+	fmt.Printf("Read %d bytes: %q\n", count, data[:count])
+
+	return // must add this line, or "missing return at end of function"
+}
+
+// defer
+func deferCloseFile2() (err error) {
+	err = nil
+
+	file, err := os.Open("not_exist.file")
+	if err != nil {
+		err = errors.New("Fail to open file")
+		return
+	}
+	defer file.Close()
+
+	data := make([]byte, 100)
+	count, err := file.Read(data)
+	if err != nil {
+		err = errors.New("Fail to read file")
+		return
+	}
+	fmt.Printf("Read %d bytes: %q\n", count, data[:count])
+
+	return
+}
+
+// panic and recover
+func readFile() {
+	defer func() {
+		if x := recover(); x != nil {
+			fmt.Println("err happens")
+			fmt.Println(x)
+		}
+	}() // not lost () at the end
+
+	file, err := os.Open("not_exist.file")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	data := make([]byte, 100)
+	count, err := file.Read(data)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("Read %d bytes: %q\n", count, data[:count])
+}
+
+// init
+// run before main
+func init() {
+	fmt.Println("init")
+
+	user := os.Getenv("USER")
+	if user == "" {
+		panic("no value for $USER")
+	}
+	fmt.Printf("value of $USER is %v\n", user)
+}
+
 func main() {
 	sayHello()
 
@@ -107,4 +187,16 @@ func main() {
 	members := []string{"zhongwei", "ubuntu"}
 	modifySlice(members, "mac")
 	fmt.Println(members)
+
+	err := deferCloseFile()
+	if err != nil {
+		fmt.Println(err)
+	}
+	err = deferCloseFile2()
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	readFile()
+
 }
