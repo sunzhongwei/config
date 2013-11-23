@@ -8,14 +8,13 @@ How to test:
 $ for i in {1..200}; do nohup curl localhost:8888 >/dev/null 2>&1 & done
 */
 
-package main 
+package main
 
 import (
 	"fmt"
-	"time"
 	"net/http"
+	"time"
 )
-
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Start at:", time.Now())
@@ -24,11 +23,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("End at:", time.Now())
 }
 
-
 func main() {
 	port := 8888
 	fmt.Println("Start server on port:", port)
 	http.HandleFunc("/", indexHandler)
 	http.ListenAndServe(fmt.Sprintf(":%v", port), nil)
 }
-
