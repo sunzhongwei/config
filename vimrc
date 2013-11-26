@@ -100,13 +100,20 @@ endif
 
 
 " python doc comment
-inoremap ''' '''<CR>'''<ESC>kA
+autocmd FileType python inoremap <buffer> ''' '''<CR>'''<ESC>kA
 
 " auto completion for tornado template language
-inoremap {% {%<SPACE><SPACE>%}<ESC>yyp3liend<ESC>k$2hi
+autocmd FileType htmldjango inoremap <buffer> {% {%<SPACE><SPACE>%}<ESC>yyp3liend<ESC>k$2hi
 
 " 醒目注释
 inoremap ### <ESC>i#<SPACE><SPACE><ESC>40i-<ESC>o# <CR><ESC>i#<SPACE><SPACE><ESC>40i-<ESC>kA
+
+" HTML comment
+" details:
+" * tornado 模板会被认定为 htmldjango
+" * 使用 <buffer> 参数，防止影响到其他类型的文件
+autocmd FileType html,htmldjango inoremap <buffer> --- <!--<SPACE><SPACE>--><ESC>3hi
+
 
 " ---------------------------------------- 
 " 代码模版

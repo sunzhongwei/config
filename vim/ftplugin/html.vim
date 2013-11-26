@@ -116,3 +116,4 @@ let b:undo_ftplugin = "setlocal commentstring< matchpairs< omnifunc< comments< f
 
 " Restore the saved compatibility options.
 let &cpo = s:save_cpo
+
