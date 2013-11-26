@@ -112,6 +112,7 @@ inoremap ### <ESC>i#<SPACE><SPACE><ESC>40i-<ESC>o# <CR><ESC>i#<SPACE><SPACE><ESC
 " details:
 " * tornado 模板会被认定为 htmldjango
 " * 使用 <buffer> 参数，防止影响到其他类型的文件
+" * 参考： http://stackoverflow.com/questions/8825032/vim-inoremap-for-specific-filetypes
 autocmd FileType html,htmldjango inoremap <buffer> --- <!--<SPACE><SPACE>--><ESC>3hi
 
 
