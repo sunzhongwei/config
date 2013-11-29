@@ -10,6 +10,7 @@
 # ----------------------------------------
 
 # build-in, 3rd party and my modules
+import time
 import tornado
 import tornado.ioloop
 import tornado.web
@@ -34,7 +35,14 @@ class MainHandler(tornado.web.RequestHandler):
         return http_client.fetch(req)
 
 
+class BlockHandler(tornado.web.RequestHandler):
+    def get(self):
+        time.sleep(5)
+        self.write("i sleep 5s")
+
+
 application = tornado.web.Application([
+    (r"/block", BlockHandler),
     (r"/", MainHandler),
 ], debug=True)
 
