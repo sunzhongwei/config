@@ -115,6 +115,8 @@ inoremap ### <ESC>i#<SPACE><SPACE><ESC>40i-<ESC>o# <CR><ESC>i#<SPACE><SPACE><ESC
 " * 参考： http://stackoverflow.com/questions/8825032/vim-inoremap-for-specific-filetypes
 autocmd FileType html,htmldjango inoremap <buffer> --- <!--<SPACE><SPACE>--><ESC>3hi
 
+autocmd FileType html,htmldjango inoremap <buffer> script <script type="text/javascript" src=""></script> 
+
 
 " ---------------------------------------- 
 " 代码模版
