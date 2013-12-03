@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="promiseApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>Index Page</title>
+  <script type="text/javascript" src="angular-1.0.8.min.js"></script>
+  <script type="text/javascript" src="angular-resource-1.0.8.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <div style="width: 500px; height: 300px; margin: auto;" ng-controller="SeqCtrl">
+    <h2>case 1: 顺序调用</h2>
+    <h3>step 1: API 3 will get result in 3 seconds, result: </h3>
+    <p>{{ api13Ret }}</p>
+    <h3>step 2: API 2 will get result in 2 seconds, result: </h3>
+    <p>{{ api12Ret }}</p>
+    <h3>step 3: API 1 will get result in 1 seconds, result: </h3>
+    <p>{{ api11Ret }}</p>
+  </div>
+
+  <div style="width: 500px; height: 300px; margin: auto;" ng-controller="JoinCtrl">
+    <h2>case 2: 合并前3个调用的结果，调用第4个api</h2>
+    <h3>API 1: </h3>
+    <p>{{ api21Ret }}</p>
+    <h3>API 2: </h3>
+    <p>{{ api22Ret }}</p>
+    <h3>API 3: </h3>
+    <p>{{ api23Ret }}</p>
+    <h3>When all is done, call API 4: </h3>
+    <p>{{ api24Ret }}</p>
+  </div>
+</body>
+
+</html>
+
+
