@@ -19,7 +19,8 @@ from tornado.httpclient import AsyncHTTPClient, HTTPRequest
 
 
 class MainHandler(tornado.web.RequestHandler):
-    '''must use @tornado.web.asynchronous
+    '''
+    * must use @tornado.web.asynchronous before version 3.1
     '''
     @tornado.web.asynchronous
     @gen.coroutine
