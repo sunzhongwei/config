@@ -19,6 +19,14 @@ def test_mongodb_id():
     print article_id.group()    # 51bebc21d3115f25710afecf
 
 
+def test_date():
+    s = "today is 2013-12-11"
+    pattern = r"(\d{4}-\d{2}-\d{2})"
+    date = re.search(pattern, s)
+    print date.group()
+
+
 if '__main__' == __name__:
     test_mongodb_id()
+    test_date()
 
