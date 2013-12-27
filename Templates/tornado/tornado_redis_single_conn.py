@@ -45,8 +45,18 @@ class HomeHandler(BaseHandler):
         '''
         self.redis_conn.set("name", "zhongwei")
         name = self.redis_conn.get("name")
+
+        # remove a name not exists
+        removed_count = self.redis_conn.delete("no_suck_name")
+
+        self.redis_conn.hmset("info", {"name": "zhongwei", "age": 18})
+        print self.redis_conn.hmget("info", ["name", "age"])
+
+        # hmget not exist key
+        print self.redis_conn.hmget("no_such_info", ["name", "age"])
+
         now = datetime.datetime.now()
-        self.write("%s, %s" % (name, now))
+        self.write("%s, %s, %s" % (name, now, removed_count))
 
 
 class Application(tornado.web.Application):
@@ -62,7 +72,7 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self, handlers, **settings)
 
         # TODO: max connection
-        self.redis_conn= redis.Redis(host='localhost', port=6379, db=0)
+        self.redis_conn = redis.Redis(unix_socket_path='/tmp/redis.sock', db=0)
 
 
 if __name__ == "__main__":
