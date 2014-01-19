@@ -9,6 +9,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -51,4 +52,11 @@ i'm zhongwei`
 	tmp[0] = 'c'
 	name = string(tmp)
 	fmt.Println("new name:", name)
+
+	// split
+	// %q : a double-quoted string safely escaped with Go syntax
+	s := "/cm-proxy/get_api_key?user_id=1"
+	fmt.Printf("%v\n", strings.Split(s, "/"))
+	fmt.Printf("%q\n", strings.Split(s, "/"))
+	fmt.Printf("%q\n", strings.SplitN(s, "/", 3)[2])
 }
