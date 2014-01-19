@@ -76,6 +76,12 @@ autocmd FileType go map <buffer> <S-e> :w<CR>:!/usr/bin/env go run % <CR>
 " format golang code before saving
 autocmd FileType go autocmd BufWritePre <buffer> Fmt 
 
+" ---------------------------------------- 
+" Javascript 
+" ---------------------------------------- 
+" <Shift> + e: Execute javascript code with node.js
+autocmd FileType javascript map <buffer> <S-e> :w<CR>:!/usr/bin/env node run % <CR>
+
 
 " MacVim configuration
 if has("gui_running")
