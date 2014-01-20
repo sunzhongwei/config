@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="highchartApp">
+
+<head>
+  <meta charset="utf-8">
+  <title>Index Page</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="angular-1.0.8.min.js"></script>
+  <script type="text/javascript" src="angular-resource-1.0.8.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body ng-controller="mainController">
+  <h1>highchart directive</h1>
+
+  <h2>static chart</h2>
+	<chart value='staticAreaChart' type="areaspline" height="300" width="600">
+	</chart>
+
+  <h2>dynamic chart</h2>
+	<chart value='dynamicAreaChart' type="areaspline" height="300" width="600">
+	</chart>
+</html>
+
