@@ -34,3 +34,22 @@ console.log("method 2: forEach, ie does not support this way.");
 colors.forEach(function(color) {
   console.log(color);
 });
+
+/**
+ * sort array
+ */
+console.log("sort array");
+
+var orgArr = [
+  ["zhongwei", 20],
+  ["zhongwei2", 80],
+  ["zhongwei3", 60]
+];
+
+console.log("original array:");
+console.log(orgArr);
+orgArr.sort(function(a, b) {
+  return a[1] > b[1];
+});
+console.log("sorted array");
+console.log(orgArr);
