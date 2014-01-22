@@ -8,12 +8,13 @@
 
 # build-in, 3rd party and my modules
 import time
+import random
 from socket import socket
 
 
 CARBON_SERVER = ''
 CARBON_PORT = 2003
-graphite_delay = 1 * 60     # graphite 录入数据的最大时间间隔为 1 分钟，
+graphite_delay = 1 * 10     # graphite 录入数据的最大时间间隔为 1 分钟，
                             # 否则无法连成线
 
 
@@ -35,8 +36,8 @@ def main():
     while True:
         try:
             dt = int(time.time())
-            value = 1
-            message = "app.zhongwei.daily_count %s %s\n" % ( value, dt)
+            value = random.randint(1, 100)
+            message = "www.sunzhongwei.com/1.1.1.1/users %s %s\n" % ( value, dt)
             print "sending message\n"
             print '-' * 80
             print message

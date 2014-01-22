@@ -37,19 +37,33 @@ colors.forEach(function(color) {
 
 /**
  * sort array
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
  */
 console.log("sort array");
 
 var orgArr = [
-  ["zhongwei", 20],
-  ["zhongwei2", 80],
-  ["zhongwei3", 60]
+  [5788.0,1390360334],
+  [181.0,1390360407],
+  [25896.0,1390360418],
+  [10059.0,1390360419],
+  [1356.0,1390360420],
+  [12854.0,1390360420],
+  [25212.0,1390360422],
+  [12330.0,1390360423],
+  [961.0,1390360423],
+  [31788.0,1390360423],
+  [6192.0,1390360424],
+  [7501.0,1390360425],
+  [16101.0,1390360426],
+  [23369.0,1390360426],
+  [14860.0,1390360427]
 ];
 
 console.log("original array:");
 console.log(orgArr);
 orgArr.sort(function(a, b) {
-  return a[1] > b[1];
+  // 注意， 不是 return a[1] > b[1];
+  return a[1] - b[1];
 });
 console.log("sorted array");
 console.log(orgArr);
