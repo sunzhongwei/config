@@ -18,8 +18,12 @@ cp gitignore_global ~/.gitignore_global
 
 mkdir -p ~/.vim
 cp -Rf vim/* ~/.vim/
+
 mkdir -p ~/Templates
 cp -Rf Templates/* ~/Templates/
+
 mkdir -p ~/bin
 cp -f bin/* ~/bin/
 
+mkdir -p ~/.tmuxinator
+cp -Rf tmuxinator/* ~/.tmuxinator/

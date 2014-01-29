@@ -1,0 +1,8 @@
+# ~/.tmuxinator/daily.yml
+# you can make as many tabs as you wish...
+
+project_name: daily 
+project_root: ~/
+tabs:
+  - shell: pwd 
+  - wiki: cd ~/vimwiki/ 
