@@ -58,3 +58,47 @@ for (var key in myCar) {
 console.log("method 2: Object.keys(o)");
 console.log(Object.keys(myCar));
 
+
+/**
+ * 分组
+ */
+console.log("------- grouping --------");
+
+items = [
+  "host1/ip1/metric1",
+  "host3/ip1/metric2",
+  "host2/ip1/metric2",
+  "host1/ip2/metric1",
+  "host2/ip1/metric3",
+  "host3/ip1/metric1",
+  "host1/ip3/metric1",
+  "host2/ip1/metric1",
+  "host3/ip1/metric3"
+];
+
+var group = new Object();
+for (i = 0; i < items.length; i++) {
+  var keys = items[i].split("/");
+  var host = keys[0];
+  var ip = keys[1];
+  var metric = keys[2];
+
+  if (!group.hasOwnProperty(host)) {
+    group[host] = new Object();
+    group[host][ip] = [metric];
+  } else {
+    if (!group[host].hasOwnProperty(ip)) {
+      group[host][ip] = [metric];
+    } else {
+      group[host][ip].push(metric);
+    }
+  }
+}
+
+// { host1: { ip1: [ 'metric1' ], ip2: [ 'metric1' ], ip3: [ 'metric1' ] },
+//   host3: { ip1: [ 'metric2', 'metric1', 'metric3' ] },
+//   host2: { ip1: [ 'metric2', 'metric3', 'metric1' ] } }
+console.log(group);
+
+
+
