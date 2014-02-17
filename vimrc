@@ -391,3 +391,8 @@ let g:vimwiki_diary_months = {
 " then we can write <div class="test"></div> in wiki
 let g:vimwiki_valid_html_tags="div,script,style,ul,li,iframe,img"
 
+
+" ---------------------------------------- 
+" User defined commands must start with an uppercase letter
+" ---------------------------------------- 
+command Sudow execute "w !sudo tee % > /dev/null"
