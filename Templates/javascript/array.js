@@ -67,3 +67,19 @@ orgArr.sort(function(a, b) {
 });
 console.log("sorted array");
 console.log(orgArr);
+
+
+/**
+ * Check if array element exists
+ */
+console.log("------- Check if array element exists -----------");
+
+var names = ["zhongwei", "test"];
+var name = "zhongwei";
+
+if (names.indexOf(name) == -1) {
+  console.log(name + " is not in array " + names);
+} else {
+  console.log(name + " is in array " + names);
+}
+
