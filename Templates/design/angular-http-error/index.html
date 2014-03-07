@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app">
+
+<head>
+  <meta charset="utf-8">
+  <title>Index Page</title>
+  <script type="text/javascript" src="angular-1.0.8.min.js"></script>
+  <script type="text/javascript" src="angular-resource-1.0.8.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <div style="width: 500px; height: 300px; margin: auto;" ng-controller="ContactsCtrl">
+    <h1>Test HTTP Error</h1>
+
+    <h2>Success</h2>
+    <ul>
+      <li ng-repeat="contact in contacts" ng-bind="contact.name">
+      </li>
+    </ul>
+
+    <h2>Fail with 500</h2>
+    <p ng-bind="msg500"></p>
+    <ul>
+      <li ng-repeat="contact in contacts500" ng-bind="contact.name">
+      </li>
+    </ul>
+
+    <h2>Fail with none zero return code</h2>
+    <p ng-bind="msgRetCode"></p>
+    <ul>
+      <li ng-repeat="contact in contactsRetCode" ng-bind="contact.name">
+      </li>
+    </ul>
+
+  </div>
+</body>
+
+</html>
+
+
