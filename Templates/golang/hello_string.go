@@ -13,6 +13,10 @@ import (
 )
 
 func main() {
+	// single charactor
+	c := 'c'
+	fmt.Println(c)
+
 	// 单行字符串
 	name := "zhongwei"
 	fmt.Println("name:", name)
