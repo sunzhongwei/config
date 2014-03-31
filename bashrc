@@ -113,3 +113,16 @@ export GOPATH=$HOME/golang
 export PATH=$PATH:$HOME/bin:$GOPATH/bin:/usr/local/sbin:/opt/local/bin
 
 alias jslint="~/.npm/jslint/0.1.9/package/bin/jslint.js"
+
+
+# ----------------------------------------
+# auto completion for tmuxinator
+# ----------------------------------------
+_codeComplete()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$(ls ~/.tmuxinator/)" -- $cur) )
+}
+
+complete -F _codeComplete tmuxinator
+
