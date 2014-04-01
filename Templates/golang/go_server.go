@@ -23,9 +23,17 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("End at:", time.Now())
 }
 
+func redirectHandler(w http.ResponseWriter, r *http.Request) {
+	// curl -IL --max-redirs 10 --max-time 10 http://localhost:8888/redirect
+	fmt.Println("redirect")
+	http.Redirect(w, r, "http://www.dnspod.com", http.StatusMovedPermanently)
+	//http.Redirect(w, r, "/redirect", http.StatusMovedPermanently)
+}
+
 func main() {
 	port := 8888
 	fmt.Println("Start server on port:", port)
 	http.HandleFunc("/", indexHandler)
+	http.HandleFunc("/redirect", redirectHandler)
 	http.ListenAndServe(fmt.Sprintf(":%v", port), nil)
 }
