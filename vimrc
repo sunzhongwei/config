@@ -396,3 +396,5 @@ let g:vimwiki_valid_html_tags="div,script,style,ul,li,iframe,img"
 " User defined commands must start with an uppercase letter
 " ---------------------------------------- 
 command Sudow execute "w !sudo tee % > /dev/null"
+command Table execute "VimwikiTable"
+
