@@ -397,4 +397,6 @@ let g:vimwiki_valid_html_tags="div,script,style,ul,li,iframe,img"
 " ---------------------------------------- 
 command Sudow execute "w !sudo tee % > /dev/null"
 command Table execute "VimwikiTable"
+command TableLeft execute "VimwikiTableMoveColumnLeft"
+command TableRight execute "VimwikiTableMoveColumnRight"
 
