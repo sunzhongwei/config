@@ -35,11 +35,25 @@ colors.forEach(function(color) {
   console.log(color);
 });
 
+
+/**
+ * slice
+ */
+console.log("---------- slice ---------------");
+var nums = [1, 2, 3, 4, 5];
+console.log("slice 返回 array, 而 [*] 返回元素");
+console.log(nums.slice(1));
+console.log(nums.slice(1, 3));
+console.log(nums.slice(3, 4));
+
+console.log(nums[4]);
+
+
 /**
  * sort array
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
  */
-console.log("sort array");
+console.log("-------------- sort array ---------------");
 
 var orgArr = [
   [5788.0,1390360334],
