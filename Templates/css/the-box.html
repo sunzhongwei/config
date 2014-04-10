@@ -31,7 +31,7 @@
     <p>box-sizing 属性用于控制 box 的大小。两个值可选：</p>
     <ul>
       <li>content-box: 默认值。计算 box 的宽高时，padding, border 需要额外加上。</li>
-      <li>border-box: padding, border 已包含在 box 的宽高内。最适宜场景就是把一个区域按百分比划分为3列。</li>
+      <li>border-box: padding, border 已包含在 box 的宽高内。注意： margin 不在这之内。最适宜场景就是把一个区域按百分比划分为3列。</li>
     </ul>
 
     <style type="text/css">
@@ -64,10 +64,30 @@
       *, *:before, *:after {
         -webkit-box-sizing: border-box; /* Needed for mobile WebKit */
         -moz-box-sizing: border-box; /* Needed for Firefox */
-        box-sizing: border-box
+        box-sizing: border-box;
       }
       </pre>
     </p>
+
+    <div style="width: 800px; overflow: hidden;">
+      <p>测试三列布局, 不要使用 inline-block</p>
+      <style type="text/css">
+        .column {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          height: 100px;
+          border: 1px dotted black;
+          float: left;
+        }
+      </style>
+      <div class="column" style="width: 30%;">
+      </div>
+      <div class="column" style="width: 40%;">
+      </div>
+      <div class="column" style="width: 30%;">
+      </div>
+    </div>
   </div>
 
   <div>
