@@ -50,6 +50,18 @@ console.log(nums[4]);
 
 
 /**
+ * remove item by index
+ */
+console.log("-------- remove item by index ----------")
+var nums = [11, 12, 13, 14, 15];
+console.log("before removing, nums is:")
+console.log(nums)
+nums.splice(2, 1)
+console.log("after removing, nums is:")
+console.log(nums)
+
+
+/**
  * sort array
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
  */
