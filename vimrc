@@ -40,6 +40,9 @@ filetype indent on
 " 针对不同类型文件分别加载不同的配置文件，例如，html、python 采用不同的缩进
 filetype plugin on
 
+" To use omni completion, type <C-X><C-O> while open in Insert mode.
+set omnifunc=syntaxcomplete#Complete
+
 
 " show cursor's position at right bottom
 set ruler
