@@ -1,0 +1,14 @@
+-- CREATE DATABASE IF NOT EXISTS test_db;
+-- GRANT ALL PRIVILEGES ON test_db.* TO 'test_user'@'localhost' IDENTIFIED BY 'password';
+
+-- > source create_tables.sql;
+
+CREATE TABLE IF NOT EXISTS test_table (
+    added_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    url VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    comments TEXT NOT NULL,
+    updated_at DATETIME NOT NULL,
+    UNIQUE (url) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

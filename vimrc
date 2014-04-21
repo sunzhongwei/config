@@ -138,6 +138,7 @@ inoremap bashtemp <ESC>:r ~/Templates/bash.template<CR>kdd
 inoremap pylog <ESC>:r ~/Templates/pylog.template<CR>kdd
 inoremap jsajax <ESC>:r ~/Templates/js_ajax.template<CR>kdd
 autocmd BufNewFile *.py 0r ~/Templates/pymain.template
+autocmd BufNewFile *.sql 0r ~/Templates/sql.template
 autocmd BufNewFile *.c 0r ~/Templates/cmain.template
 autocmd BufNewFile *.sh 0r ~/Templates/bash.template
 autocmd BufNewFile *.java 0r ~/Templates/javamain.template
