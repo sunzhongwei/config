@@ -231,7 +231,7 @@ map h3 I-<ESC>A-<ESC>o
 
 " Remove trailing whitespace in vim before saving
 " 对于新建文件，可能需要重新打开才能识别文件类型(:e)
-autocmd FileType c,cpp,python,ruby,java,sh,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,python,ruby,java,sh,html,javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 
 " A tip might be to run the Pyflakes check every time you write a Python file,
