@@ -8,9 +8,13 @@ console.log(isValidIP('0.0.1'));
 
 
 function isValidDomain(domain) {
-  var expression = /^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/;
+  //var expression = /^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/;
+  var expression = /^((?:(?:(?:\w[\.\-\+]?)*)\w)+)\.(\w{2,6})$/;
   return expression.test(domain);
 }
 
 console.log(isValidDomain("paobujie.com"));
+console.log(isValidDomain("z.cn"));
+console.log(isValidDomain("www.z.cn"));
+console.log(isValidDomain("z-z.cn"));
 console.log(isValidDomain("paobujie"));
