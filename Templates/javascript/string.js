@@ -7,7 +7,7 @@ console.log("Start");
 
 
 /**
- * multi line 
+ * multi line
  */
 var s = "This is one-line string \
 written on multi line";
@@ -29,3 +29,10 @@ console.log("------------ split ------------");
 var s = "1/2/3";
 var slices = s.split("/");
 console.log(slices);
+
+
+/**
+ * replace
+ */
+var s ="test___hello___";
+console.log(s.replace(/___/g, "/"));
