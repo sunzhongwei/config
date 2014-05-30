@@ -66,7 +66,7 @@ class TornadoWorker(object):
     def run(self):
         http_client = AsyncHTTPClient(max_clients=self.max_clients)
         for job in self.jobs:
-            req = HTTPRequest(job.url, request_timeout=3,
+            req = HTTPRequest(job.url, connect_timeout=5, request_timeout=3,
                               headers=self.headers)
             http_client.fetch(req, functools.partial(self._handle_request,
                                                      job.url))
