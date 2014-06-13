@@ -17,6 +17,8 @@ console.log(arr2);
 console.log(arr3);
 console.log("length is: " + arr1.length);
 
+// get last item of array
+console.log("Last item in arr3 is: " + arr3[arr3.length - 1])
 
 /**
  * Iterating over arrays
