@@ -40,6 +40,11 @@ i'm zhongwei`
 	new_string := fmt.Sprintf("my name is: %v, age is: %v", name, 18)
 	fmt.Println(new_string)
 
+	new_multi_line_string := fmt.Sprintf(`%v line
+%v line
+%v line`, "first", "second", "third")
+	fmt.Println(new_multi_line_string)
+
 	// 不可修改
 	// name[2] = 'c'
 	// 上面一行在编译时，会报错 cannot assign to name[2]
