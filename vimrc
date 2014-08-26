@@ -111,6 +111,9 @@ endif
 " python doc comment
 autocmd FileType python inoremap <buffer> ''' '''<CR>'''<ESC>kA
 
+" python utf-8
+autocmd FileType python inoremap <buffer> utf8 # -*- coding: utf-8 -*-
+
 " auto completion for tornado template language
 autocmd FileType htmldjango inoremap <buffer> {% {%<SPACE><SPACE>%}<ESC>yyp3liend<ESC>k$2hi
 
