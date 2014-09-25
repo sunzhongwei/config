@@ -244,7 +244,7 @@ autocmd BufWritePost *.py call Pyflakes()
 
 " format status line
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [%p%%]\ [LINES=%L]
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [LINES=%L]
+set statusline=%F%m%r%h%w\ [%{&ff}\ %{&fileencoding}\ %Y]\ [POS=%04l,%04v]
 set laststatus=2
 
 
