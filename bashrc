@@ -126,3 +126,8 @@ _codeComplete()
 
 complete -F _codeComplete tmuxinator
 
+
+# ----------------------------------------
+# Change git's language to English without changing the locale
+# ----------------------------------------
+alias git='LANG=en_US.UTF-8 git'
