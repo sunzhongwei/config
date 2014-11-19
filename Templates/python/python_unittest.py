@@ -19,15 +19,18 @@ class TestHelloWorld(unittest.TestCase):
         self.name = None
 
     def test_hello_world(self):
+        '''hello world
+        '''
         expected_value = "zhongwei"
         self.assertEqual(self.name, expected_value)
 
     def test_for_fail(self):
+        '''test for fail
+        '''
         expected_value = "qq"
         self.assertEqual(self.name, expected_value)
 
 
 if '__main__' == __name__:
-    unittest.main()
-
+    unittest.main(verbosity=2)
 
