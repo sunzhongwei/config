@@ -121,7 +121,7 @@ alias jslint="~/.npm/jslint/0.1.9/package/bin/jslint.js"
 _codeComplete()
 {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "$(ls ~/.tmuxinator/)" -- $cur) )
+    COMPREPLY=( $(compgen -W "$(ls ~/.tmuxinator/ | xargs basename -s .yml)" -- $cur) )
 }
 
 complete -F _codeComplete tmuxinator
