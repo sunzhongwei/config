@@ -47,3 +47,10 @@ sed '
 s/1/2/g
 s/3/4/g
 ' <old_sed.conf >new_sed.conf
+
+# ----------------------------------------
+# 添加一行
+# ----------------------------------------
+line=$(grep -n "sys conf" old_sed.conf | grep -o "^[0-9]*")
+line=$((line - 3))
+sed -i $line"i\i=1" new_sed.conf
