@@ -130,6 +130,7 @@ autocmd FileType html,htmldjango inoremap <buffer> --- <!--<SPACE><SPACE>--><ESC
 autocmd FileType html,htmldjango inoremap <buffer> script <script type="text/javascript" src=""></script> 
 
 autocmd FileType javascript inoremap <buffer> /** /**<CR><CR>/<ESC>kA<SPACE>
+autocmd FileType sh inoremap <buffer> if if<SPACE>;<SPACE>then<ESC>o<ESC>ifi<ESC>kf;i
 
 
 " ---------------------------------------- 
