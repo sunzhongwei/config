@@ -148,7 +148,7 @@ autocmd BufNewFile *.sh 0r ~/Templates/bash.template
 autocmd BufNewFile *.java 0r ~/Templates/javamain.template
 autocmd BufNewFile *.html 0r ~/Templates/html5.template
 autocmd BufNewFile *.go 0r ~/Templates/go.template
-autocmd BufNewFile *.markdown 0r ~/Templates/markdown.template
+autocmd BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} 0r ~/Templates/markdown.template
 
 
 " ---------------------------------------- 
@@ -373,6 +373,9 @@ autocmd FileType vimwiki noremap <C-S-Space> <C-Space>
 
 autocmd FileType vimwiki map <buffer> <S-e> :Vimwiki2HTMLBrowse <CR>
 
+" 解决 markdown 文件识别为 vimwiki 的问题
+let g:vimwiki_ext2syntax = {}
+
 
 " UI language
 if has('unix')
@@ -409,3 +412,4 @@ command Table execute "VimwikiTable"
 command TableLeft execute "VimwikiTableMoveColumnLeft"
 command TableRight execute "VimwikiTableMoveColumnRight"
 
+let g:vim_markdown_folding_disabled=1
