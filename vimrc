@@ -148,6 +148,7 @@ autocmd BufNewFile *.sh 0r ~/Templates/bash.template
 autocmd BufNewFile *.java 0r ~/Templates/javamain.template
 autocmd BufNewFile *.html 0r ~/Templates/html5.template
 autocmd BufNewFile *.go 0r ~/Templates/go.template
+autocmd BufNewFile *.markdown 0r ~/Templates/markdown.template
 
 
 " ---------------------------------------- 
