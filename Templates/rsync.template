@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e	# or use "set -o errexit" to quit on error.
+set -x  # or use "set -o xtrace" to print the statement before you execute it.
+
+rsync --verbose  --progress --stats --compress \
+      --recursive --times --perms --links --delete \
+      --exclude "*.bak" --exclude "*~" --exclude "*.swp" \
+      /source_dir/ username@domain.com:/target_dir
