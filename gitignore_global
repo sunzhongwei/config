@@ -5,7 +5,7 @@
 *.pyc
 
 # self
-.gitignore
+#.gitignore
 
 # ignore vim temp file
 *.swp
