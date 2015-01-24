@@ -414,3 +414,9 @@ command TableLeft execute "VimwikiTableMoveColumnLeft"
 command TableRight execute "VimwikiTableMoveColumnRight"
 
 let g:vim_markdown_folding_disabled=1
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
