@@ -58,7 +58,7 @@ DNSMASQ_CONF
 cat <<DNSMASQ_RESOLV_CONF > /etc/dnsmasq.resolv.conf
 nameserver 114.114.114.114
 nameserver 182.254.116.116
-nameserver 119.29.29.29.29
+nameserver 119.29.29.29
 DNSMASQ_RESOLV_CONF
 
 # start dnsmasq service
@@ -82,6 +82,6 @@ options attempts:2
 nameserver 127.0.0.1
 nameserver 114.114.114.114
 nameserver 182.254.116.116
-nameserver 119.29.29.29.29
+nameserver 119.29.29.29
 RESOLV_CONF
 
