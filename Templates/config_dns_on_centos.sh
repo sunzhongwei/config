@@ -67,14 +67,6 @@ DNSMASQ_RESOLV_CONF
 # set service start on boot
 chkconfig dnsmasq on
 
-# use dnsmasq as primary DNS server
-if  ! grep '127.0.0.1' /etc/resolv.conf; then
-    sed -i '1s/^/nameserver 127.0.0.1/' /etc/resolv.conf
-    echo "Added 127.0.0.1 to /etc/resolv.conf"
-else
-    echo "127.0.0.1 already in /etc/resolv.conf, ignore"
-fi
-
 # confirm
 if dig sunzhongwei.com @127.0.0.1 | grep 42.96.145.169 > /dev/null ; then
     echo "dnsmasq works! Nice!"
@@ -82,3 +74,14 @@ else
     echo "dnsmasq doesn't work! Please confirm!"
     exit 1
 fi
+
+# use dnsmasq as primary DNS server
+cat <<RESOLV_CONF > /etc/resolv.conf
+options timeout:1
+options attempts:2
+nameserver 127.0.0.1
+nameserver 114.114.114.114
+nameserver 182.254.116.116
+nameserver 119.29.29.29.29
+RESOLV_CONF
+
