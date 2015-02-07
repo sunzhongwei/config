@@ -420,3 +420,15 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+" 自动填充 Markdown 模板变量
+function! TemplateSlugSubstitutions()
+	exe "normal gg"
+	let date = system("date '+%Y-%m-%d %H:%M:%S'")
+	let date = strpart(date, 0, strlen(date) - 1)
+	exe "silent! :1,$s/#SLUG_DATE/".date."/g"
+	exe "silent! :1,$s/Modified:\ .*/Modified:\ ".date."/g"
+endfunction
+
+autocmd FileType md,mdown,mkd,mkdn,markdown,mdwn map <buffer> <S-e> :call TemplateSlugSubstitutions() <CR>
