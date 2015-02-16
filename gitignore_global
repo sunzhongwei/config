@@ -12,3 +12,6 @@
 
 .sass-cache
 *.sqlite3
+
+# react-jsx
+.module-cache
