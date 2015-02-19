@@ -427,8 +427,11 @@ function! TemplateSlugSubstitutions()
 	exe "normal gg"
 	let date = system("date '+%Y-%m-%d %H:%M:%S'")
 	let date = strpart(date, 0, strlen(date) - 1)
+	" get file name without extension
+	let slug = expand("%:r")
 	exe "silent! :1,$s/#SLUG_DATE/".date."/g"
 	exe "silent! :1,$s/Modified:\ .*/Modified:\ ".date."/g"
+	exe "silent! :1,$s/#SLUG_URL/".slug."/g"
 endfunction
 
 autocmd FileType md,mdown,mkd,mkdn,markdown,mdwn map <buffer> <S-e> :call TemplateSlugSubstitutions() <CR>
