@@ -15,3 +15,6 @@
 
 # react-jsx
 .module-cache
+
+# npm
+node_modules
