@@ -1,27 +1,41 @@
-set nocompatible   	" For vimwiki
-syntax on
+" --------------
+" Vundle config
+" --------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" set fileformat=mac
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
 
-" make sure there is no more than 80 characters one line
-" disable this, because it's conflict with set number.
-" set columns=80
+Plugin 'scrooloose/nerdtree'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
-
-" yy 就可以复制到系统剪切板
-" http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
-"if $TMUX == ''
-"    set clipboard+=unnamed
-"endif
-
-
-" show line number
-set number
-" set nonumber
-
-
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+" filetype indent on
 " 使用 filetype 而不是 autocmd 做缩进配置的原因：
 " http://henry.precheur.org/vim/python
 " Generally don’t use the autocmd command to add hooks to a specific filename’s
@@ -29,16 +43,46 @@ set number
 " commands when opening a Python file; it’s not. Because all Python filenames
 " do not necessarily end with .py; some executable scripts might not have
 " extension for example.
-
 " 自动加载 ~/.vim/indent/<filetype>.vim
 " vim7.3 自带了这些文件 /usr/local/share/vim/vim73/indent/python.vim
 " 但是，还是 copy 到 ~/.vim/<indent/plugin>/ 做定制比较好
 " 用于自动判定缩进，例如，换行时的缩进判定
-filetype indent on
-
+"
+" filetype plugin on
 " ~/.vim/plugin/<filetype>.vim
 " 针对不同类型文件分别加载不同的配置文件，例如，html、python 采用不同的缩进
-filetype plugin on
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+" --------------
+" UltiSnips config
+" --------------
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+" --------------
+" my config
+" --------------
+" show line number
+set number
 
 " To use omni completion, type <C-X><C-O> while open in Insert mode.
 set omnifunc=syntaxcomplete#Complete
