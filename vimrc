@@ -32,6 +32,9 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+" zen-coding
+Plugin 'mattn/emmet-vim'
+Plugin 'groenewege/vim-less'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -478,4 +481,13 @@ function! TemplateSlugSubstitutions()
 	exe "silent! :1,$s/#SLUG_URL/".slug."/g"
 endfunction
 
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType md,mdown,mkd,mkdn,markdown,mdwn map <buffer> <S-e> :call TemplateSlugSubstitutions() <CR>
+
+
+" indent
+autocmd FileType html,htmldjango setlocal shiftwidth=2 tabstop=2
+autocmd FileType css,less setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
+
+nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
