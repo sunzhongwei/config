@@ -36,6 +36,10 @@ Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
 Plugin 'groenewege/vim-less'
 
+" markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " filetype indent on
@@ -483,6 +487,8 @@ endfunction
 
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType md,mdown,mkd,mkdn,markdown,mdwn map <buffer> <S-e> :call TemplateSlugSubstitutions() <CR>
+" format markdown table before saving
+autocmd FileType md,mdown,mkd,mkdn,markdown,mdwn autocmd BufWritePre <buffer> TableFormat 
 
 
 " indent
