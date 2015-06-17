@@ -40,6 +40,8 @@ Plugin 'groenewege/vim-less'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+Plugin 'andviro/flake8-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " filetype indent on
@@ -291,11 +293,6 @@ map h3 I-<ESC>A-<ESC>o
 autocmd FileType c,cpp,python,ruby,java,sh,html,javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 
-" A tip might be to run the Pyflakes check every time you write a Python file,
-" to enable this, add the following line to your .vimrc file
-autocmd BufWritePost *.py call Pyflakes()
-
-
 " format status line
 " set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ENCODING=%{&fileencoding}]\ [POS=%04l,%04v]\ [%p%%]\ [LINES=%L]
 set statusline=%F%m%r%h%w\ [%{&ff}\ %{&fileencoding}\ %Y]\ [POS=%04l,%04v]
@@ -487,9 +484,6 @@ endfunction
 
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd FileType md,mdown,mkd,mkdn,markdown,mdwn map <buffer> <S-e> :call TemplateSlugSubstitutions() <CR>
-" format markdown table before saving
-autocmd FileType md,mdown,mkd,mkdn,markdown,mdwn autocmd BufWritePre <buffer> TableFormat 
-
 
 " indent
 autocmd FileType html,htmldjango setlocal shiftwidth=2 tabstop=2
