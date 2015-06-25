@@ -123,6 +123,7 @@ set showcmd
 " Execute file being edited with <Shift> + e:
 " add -B argument to not generate .pyc file
 autocmd FileType python map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
+autocmd FileType python setl shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=79 expandtab
 
 " ---------------------------------------- 
 " Golang
