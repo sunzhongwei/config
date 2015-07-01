@@ -42,6 +42,10 @@ Plugin 'plasticboy/vim-markdown'
 
 Plugin 'andviro/flake8-vim'
 
+" Install Node.js and JSHint. 
+Plugin 'Shutnik/jshint2.vim'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 " filetype indent on
@@ -124,6 +128,7 @@ set showcmd
 " add -B argument to not generate .pyc file
 autocmd FileType python map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
 autocmd FileType python setl shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=79 expandtab
+autocmd FileType javascript setl shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=79 
 
 " ---------------------------------------- 
 " Golang

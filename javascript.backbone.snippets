@@ -1,0 +1,53 @@
+snippet model
+	var ${1:model} = Backbone.Model.extend({
+		defaults: {
+		},
+
+		urlRoot: function() {
+			return '/${2:$1}';
+		},
+
+		initialize: function () {
+		}   
+	}); 
+
+
+snippet view
+	var ${1} = Backbone.View.extend({
+		tagName: "${2}",
+		el: "",
+		template: _.template();
+
+		events: {
+			${3}
+		},  
+
+		initialize: function () {
+			_.bindAll(this, "render", ${4});
+		},  
+
+		render: function () {
+		}   
+	}); 
+
+
+# Collection
+snippet collection 
+	var ${1:Thing} = Backbone.Collection.extend({
+		model: ${2:model},
+		url: "${3}"
+	});
+
+
+# Router
+snippet router 
+	var ${1:Thing} = Backbone.Router.extend({
+		routes: {
+		},
+	});
+
+
+snippet define
+	define(function(require) {
+		var Backbone = require('backbone');
+	});
