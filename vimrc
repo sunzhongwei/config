@@ -31,7 +31,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'sunzhongwei/vim-snippets'
 " zen-coding
 Plugin 'mattn/emmet-vim'
 Plugin 'groenewege/vim-less'
@@ -129,6 +129,7 @@ set showcmd
 autocmd FileType python map <buffer> <S-e> :w<CR>:!/usr/bin/env python -B % <CR>
 autocmd FileType python setl shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=79 expandtab
 autocmd FileType javascript setl shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=79 
+autocmd FileType snippets setl shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=79 
 
 " ---------------------------------------- 
 " Golang
